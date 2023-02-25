@@ -2,8 +2,12 @@
     font-family: sans-serif;
 }
 
+img {
+    height: 75px;
+}
+
 header {
-    height: 10vh;
+    height: 75px;
     width: 100%;
     padding: 5px 10px;
 
@@ -24,28 +28,40 @@ header {
 
 .app_body {
     width: 100%;
-    height: 80vh;
+    height: calc(100vh - 265px);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    flex-direction: column;
 
 }
 
+h2, h3 {
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
 footer {
-    height: 5vh;
+    height: 20px;
 }
 
 button {
     background-color: #afd375;
     border: #000000 2px solid;
     border-radius: 20px;
+    margin: 8px 0;
 }
 
 table {
-    width: 60%;
+    table-layout: fixed;
+    width: 100%;
     padding: 10px;
     border-collapse: collapse;
     margin-left: 20px;
+}
+
+thead th:nth-child(1) {
+    width: 60%;
 }
 
 td {
@@ -54,4 +70,8 @@ td {
 
 tr:hover {
     background-color: #afd375;
+}
+
+thead tr:hover {
+    background-color: transparent;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "./Hire_me_v2.png"
+import logo from "./Hire_me_logo.png"
 import "./Main.css"
 
 export const Main = () => {
@@ -19,7 +19,18 @@ export const Main = () => {
                 </div>
             </header>
             <div className="app_body">
+                <h2>Firmy do których wysłano CV:</h2>
                 <table>
+                    <thead>
+                    <tr>
+                        <th>Nazwa firmy</th>
+                        <th>Szczegóły</th>
+                        <th>Status</th>
+                        <th>Cross</th>
+                        <th>Check</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Wyższa szkoła marketingu</td>
                         <td>
@@ -65,10 +76,26 @@ export const Main = () => {
                         <td>❌</td>
                         <td>✔</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
+            <hr/>
             <footer>
-                <button>Archiwum</button>
+                <div>
+                    <h3>Ostatnio zarchiwizowane zgłoszenia:</h3>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Łzy i śmiech</td>
+                            <td>Status</td>
+                            <td>
+                                <button>Przywróć</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button>Przejdź do archiwum</button>
+                </div>
             </footer>
         </>
     )
