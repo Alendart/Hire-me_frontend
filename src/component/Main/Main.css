@@ -1,0 +1,57 @@
+* {
+    font-family: sans-serif;
+}
+
+header {
+    height: 10vh;
+    width: 100%;
+    padding: 5px 10px;
+
+}
+
+.header_content {
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.button_set {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}
+
+.app_body {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+footer {
+    height: 5vh;
+}
+
+button {
+    background-color: #afd375;
+    border: #000000 2px solid;
+    border-radius: 20px;
+}
+
+table {
+    width: 60%;
+    padding: 10px;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+
+td {
+    padding: 8px;
+}
+
+tr:hover {
+    background-color: #afd375;
+}
