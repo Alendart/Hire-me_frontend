@@ -8,7 +8,7 @@ export const Main = () => {
 
     return (
         <>
-            <header>
+            <header className="header-image">
                 <div className="header_content">
                     <img src={logo} alt="logo"/>
                     <button>Dodaj nową pozycję</button>
@@ -95,6 +95,9 @@ export const Main = () => {
                         </tbody>
                     </table>
                     <button>Przejdź do archiwum</button>
+                    <p>Image by <a
+                        href="https://www.freepik.com/free-vector/flat-design-polygonal-background_13264338.htm#query=background%20geometric%20green&position=1&from_view=search&track=ais">Freepik</a>
+                    </p>
                 </div>
             </footer>
         </>

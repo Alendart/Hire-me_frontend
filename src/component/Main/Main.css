@@ -27,6 +27,7 @@ header {
 }
 
 .app_body {
+
     width: 100%;
     height: calc(100vh - 265px);
     display: flex;
@@ -74,4 +75,10 @@ tr:hover {
 
 thead tr:hover {
     background-color: transparent;
+}
+
+.header-image {
+    background-image: url("./Header_background_v4.jpg");
+    background-size: cover;
+    background-color: #cccccc;
 }
