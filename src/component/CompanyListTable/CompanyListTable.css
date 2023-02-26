@@ -1,0 +1,23 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+    padding: 10px;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+
+thead th:nth-child(1) {
+    width: 55%;
+}
+
+td {
+    padding: 8px;
+}
+
+tr:hover {
+    background-color: #afd375;
+}
+
+thead tr:hover {
+    background-color: transparent;
+}

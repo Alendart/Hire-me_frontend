@@ -1,0 +1,29 @@
+img {
+    height: 75px;
+}
+
+header {
+    height: 75px;
+    width: 100%;
+    padding: 5px 10px;
+
+}
+
+.header_content {
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.header-image {
+    background-image: url("./Header_background_v4.jpg");
+    background-size: cover;
+    background-color: #cccccc;
+}
+
+.button_div {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}

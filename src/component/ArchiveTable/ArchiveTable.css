@@ -1,0 +1,23 @@
+.archive-table table {
+    table-layout: fixed;
+    width: 100%;
+    padding: 10px;
+    border-collapse: collapse;
+    margin-left: 20px;
+}
+
+.archive-table thead th:nth-child(1) {
+    width: 55%;
+}
+
+.archive-table td {
+    padding: 8px;
+}
+
+.archive-table tr:hover {
+    background-color: #afd375;
+}
+
+.archive-table thead tr:hover {
+    background-color: transparent;
+}
