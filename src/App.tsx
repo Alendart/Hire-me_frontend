@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import {ApplyView} from "./component/views/ApplyView";
 import {MapView} from "./component/views/MapView";
 
+
 function App() {
     return (
         <>
