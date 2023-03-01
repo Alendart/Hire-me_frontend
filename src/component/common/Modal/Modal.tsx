@@ -6,7 +6,7 @@ interface Props {
     class: string;
     show: boolean;
     handleClose: () => any;
-    content: string | JSX.Element;
+    children: JSX.Element;
 }
 
 
@@ -24,7 +24,7 @@ export const Modal = (props: Props) => {
                         <h2>Modal Window</h2>
                     </div>
                     <div className="modal-content">
-                        {props.content}
+                        {props.children}
                     </div>
                     <div className="modal-footer">
                         <button className="modal-button" onClick={() => props.handleClose()}>Zamknij</button>

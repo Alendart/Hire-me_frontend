@@ -52,7 +52,9 @@ export const Main = () => {
                 <h2>Firmy do których wysłano CV:</h2>
                 <CompanyListTable list={companyList}/>
                 <button onClick={loginModalOpen}>Modal</button>
-                <Modal class="login" show={login} handleClose={loginModalClose} content={"Dane do logowania tutaj"}/>
+                <Modal class="login" show={login} handleClose={loginModalClose}>
+                    <p>Logowanie...</p>
+                </Modal>
             </div>
         </>
     )
