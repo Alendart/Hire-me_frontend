@@ -1,6 +1,6 @@
 import React from "react";
 import {CompanyBasicData} from "../../types";
-import {Btn} from "../common/Btn/Btn";
+import {BtnTemp} from "../common/Btn/BtnTemp";
 
 import "./ArchiveTable.css"
 
@@ -17,7 +17,7 @@ export const ArchiveTable = (props: Props) => (
                 <td>{props.item.name}</td>
                 <td>{props.item.status}</td>
                 <td>
-                    <Btn name="Przywróć"/>
+                    <BtnTemp name="Przywróć"/>
                 </td>
             </tr>
             </tbody>

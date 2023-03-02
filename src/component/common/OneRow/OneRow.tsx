@@ -1,5 +1,5 @@
 import React from "react";
-import {Btn} from "../Btn/Btn";
+import {BtnTemp} from "../Btn/BtnTemp";
 import {CompanyBasicData} from "../../../types";
 
 
@@ -14,7 +14,7 @@ export const OneRow = (props: Props) => {
         <tr>
             <td>{props.item.name}</td>
             <td>
-                <Btn name="Szczegóły"/>
+                <BtnTemp name="Szczegóły"/>
             </td>
             <td>{props.item.status}</td>
             <td>❌</td>

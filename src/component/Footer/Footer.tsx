@@ -1,6 +1,6 @@
 import React from "react";
 import {ArchiveTable} from "../ArchiveTable/ArchiveTable";
-import {Btn} from "../common/Btn/Btn";
+import {BtnTemp} from "../common/Btn/BtnTemp";
 import {applicationStatus} from "../../types";
 
 
@@ -18,7 +18,7 @@ export const Footer = () => (
         <div>
             <h3>Ostatnio zarchiwizowane zgłoszenia:</h3>
             <ArchiveTable item={archCompany}/>
-            <Btn name="Przejdź do archiwum"/>
+            <BtnTemp name="Przejdź do archiwum"/>
             <p>Image by <a
                 href="https://www.freepik.com/free-vector/flat-design-polygonal-background_13264338.htm#query=background%20geometric%20green&position=1&from_view=search&track=ais">Freepik</a>
             </p>

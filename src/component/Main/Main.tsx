@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 
 import "./Main.css"
 import {applicationStatus, CompanyBasicData} from "../../types";
 import {CompanyListTable} from "../CompanyListTable/CompanyListTable";
-import {Modal} from "../common/Modal/Modal";
 
 
 const companyList: CompanyBasicData[] = [
@@ -36,25 +35,13 @@ const companyList: CompanyBasicData[] = [
 
 
 export const Main = () => {
-    const [login, setLogin] = useState(false);
 
-    const loginModalClose = () => {
-        setLogin(false)
-    }
-
-    const loginModalOpen = () => {
-        setLogin(true)
-    }
 
     return (
         <>
             <div className="app_body">
                 <h2>Firmy do których wysłano CV:</h2>
                 <CompanyListTable list={companyList}/>
-                <button onClick={loginModalOpen}>Modal</button>
-                <Modal class="login" show={login} handleClose={loginModalClose}>
-                    <p>Logowanie...</p>
-                </Modal>
             </div>
         </>
     )
