@@ -5,7 +5,7 @@ import {BtnTemp} from "../common/Btn/BtnTemp";
 import "./Header.css"
 import {Modal} from "../common/Modal/Modal";
 import {Btn} from "../common/Btn/Btn";
-import {LoginForm} from "../LoginForm/LoginForm";
+import {AccountPopup} from "../AccountPopup/AccountPopup";
 
 
 export const Header = () => {
@@ -31,8 +31,8 @@ export const Header = () => {
                     </div>
                 </div>
                 <>
-                    <Modal text="Zaloguj się!" class="login" show={login} handleClose={loginModalClose}>
-                        <LoginForm/>
+                    <Modal text="Konto użytkownika" class="login" show={login} handleClose={loginModalClose}>
+                        <AccountPopup/>
                     </Modal>
                 </>
             </header>

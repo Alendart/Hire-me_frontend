@@ -31,9 +31,6 @@ export const Modal = (props: Props) => {
                     <div className="modal-content">
                         {props.children}
                     </div>
-                    {/*<div className="modal-footer">*/}
-                    {/*    <button className="modal-button" onClick={() => props.handleClose()}>Zamknij</button>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </>
