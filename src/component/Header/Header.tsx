@@ -5,6 +5,7 @@ import {BtnTemp} from "../common/Btn/BtnTemp";
 import "./Header.css"
 import {Modal} from "../common/Modal/Modal";
 import {Btn} from "../common/Btn/Btn";
+import {LoginForm} from "../LoginForm/LoginForm";
 
 
 export const Header = () => {
@@ -30,8 +31,8 @@ export const Header = () => {
                     </div>
                 </div>
                 <>
-                    <Modal class="login" show={login} handleClose={loginModalClose}>
-                        <p>Logowanie...</p>
+                    <Modal text="Zaloguj się!" class="login" show={login} handleClose={loginModalClose}>
+                        <LoginForm/>
                     </Modal>
                 </>
             </header>
