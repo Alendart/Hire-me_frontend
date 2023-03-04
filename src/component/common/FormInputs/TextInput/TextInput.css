@@ -1,11 +1,27 @@
-.text-input {
-    height: 1.7em;
-    padding: 0.5em;
-    margin: 0.5em 0;
-    width: 80%;
-    border: 1px solid #aaaaaa
+.input-box {
+    display: block;
+    box-sizing: border-box;
 }
 
 label {
     font-weight: bold;
+    margin-left: 20px;
+}
+
+input[type=text] {
+    padding: 7px 10px;
+    margin: 7px 0;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 0 7px 2px rgb(0 0 0 / 10%);
+    width: 94%;
+}
+
+.error {
+    color: #ff0000bd;
+    font-size: 13px;
+    text-align: left;
+    font-weight: 700;
+    font-family: ui-sans-serif;
+    margin: 0 0 12px 34px;
 }
