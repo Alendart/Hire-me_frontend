@@ -3,6 +3,7 @@ import React from "react";
 import "./Modal.css";
 
 interface Props {
+    text: string;
     class: string;
     show: boolean;
     handleClose: () => any;
@@ -18,10 +19,13 @@ export const Modal = (props: Props) => {
 
     return (
         <>
-            <div className="overlay" onClick={() => props.handleClose()}>
-                <div className={`modal-${props.class}`}>
+            <div
+                className="overlay"
+                onClick={() => props.handleClose()}
+            >
+                <div className={`modal-${props.class}`} onClick={e => e.stopPropagation()}>
                     <div className="modal-header">
-                        <h2>Modal Window</h2>
+                        <h2>{props.text}</h2>
                     </div>
                     <div className="modal-content">
                         {props.children}
