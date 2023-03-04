@@ -26,13 +26,14 @@ export const Modal = (props: Props) => {
                 <div className={`modal-${props.class}`} onClick={e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h2>{props.text}</h2>
+                        <button className="btn-modal-close" onClick={() => props.handleClose()}></button>
                     </div>
                     <div className="modal-content">
                         {props.children}
                     </div>
-                    <div className="modal-footer">
-                        <button className="modal-button" onClick={() => props.handleClose()}>Zamknij</button>
-                    </div>
+                    {/*<div className="modal-footer">*/}
+                    {/*    <button className="modal-button" onClick={() => props.handleClose()}>Zamknij</button>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </>
