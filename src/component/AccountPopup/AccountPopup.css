@@ -1,0 +1,21 @@
+.login-form {
+
+}
+
+.btn-login-submit, .btn-switch {
+    background-color: #0a5c86;
+    border: 0;
+    border-radius: 15px;
+    width: 30%;
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.login-footer {
+    border-top: 1px solid #eeeeee;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
