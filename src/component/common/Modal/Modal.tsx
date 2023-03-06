@@ -21,9 +21,9 @@ export const Modal = (props: Props) => {
         <>
             <div
                 className="overlay"
-                onClick={() => props.handleClose()}
+                onMouseDown={() => props.handleClose()}
             >
-                <div className={`modal-${props.class}`} onClick={e => e.stopPropagation()}>
+                <div className={`modal-${props.class}`} onMouseDown={e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h2>{props.text}</h2>
                         <button className="btn-modal-close" onClick={() => props.handleClose()}></button>
