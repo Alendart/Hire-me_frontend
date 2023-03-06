@@ -33,14 +33,28 @@ export const AccountPopup = () => {
                     pwd2: '',
                 }}
                 validationSchema={Yup.object({
-                    login: Yup.string().required("Pole wymagane"),
-                    pwd: Yup.string().required("Pole wymagane"),
-                    pwd2: Yup.string().required("Pole wymagane"),
+                    login: Yup.string()
+                        .required("Pole wymagane")
+                        .min(4, "Login musi mieć więcej niż 4 znaki")
+                        .max(20, "Login musi mieć mniej niż 21 znaków"),
+                    pwd: Yup.string()
+                        .required("Pole wymagane")
+                        .min(4, "Hasło musi mieć więcej niż 4 znaki")
+                        .max(12, "Hasło musi mieć mniej niż 13 znaków"),
+                    pwd2: Yup.string()
+                        .required("Pole wymagane")
+                        .min(4, "Hasło musi mieć więcej niż 4 znaki")
+                        .max(12, "Hasło musi mieć mniej niż 13 znaków")
+                        .oneOf([Yup.ref("pwd"), ""], "Hasła nie są takie same"),
                 })}
                 onSubmit={(
                     values: CreateValues,
                     {setSubmitting}: FormikHelpers<CreateValues>
                 ) => {
+                    (async () => {
+
+
+                    })();
                     setTimeout(() => {
                         if (change) {
                             const val: LoginValues = {...values}
