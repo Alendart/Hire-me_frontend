@@ -8,7 +8,7 @@ label {
     margin-left: 20px;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     padding: 7px 10px;
     margin: 7px 0;
     border: 2px solid #eee;
@@ -27,14 +27,14 @@ input[type=text] {
     margin: 0 0 12px 34px;
 }
 
-input[type=text]:focus, input[type=text]:focus-visible {
+input[type=text]:focus, input[type=text]:focus-visible, input[type=password]:focus, input[type=password]:focus-visible {
     outline: none;
     border: 1px solid #676767;
     background-color: rgba(116, 116, 121, 0.06);
     transition: .5s border-color;
 }
 
-input[type=text]:hover {
+input[type=text]:hover, input[type=password]:hover {
     background-color: rgba(116, 116, 121, 0.06);
     transition: .3s background-color;
 }

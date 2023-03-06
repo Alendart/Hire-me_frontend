@@ -21,13 +21,13 @@ export const LoginCreateForm = (props: Props) => {
                 <TextInput
                     label="Hasło"
                     name="pwd"
-                    type="text"
+                    type="password"
                     placeholder="Wpisz tutaj swoje hasło... "
                 />
                 <TextInput
                     label="Powtórz hasło"
                     name="pwd2"
-                    type="text"
+                    type="password"
                     placeholder="Powtórz hasło..."
                 />
             </>
@@ -45,7 +45,7 @@ export const LoginCreateForm = (props: Props) => {
                 <TextInput
                     label="Hasło"
                     name="pwd"
-                    type="text"
+                    type="password"
                     placeholder="Wpisz tutaj swoje hasło... "
                 />
             </>
