@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import * as Yup from "yup";
 import {Form, Formik, FormikHelpers} from "formik";
 import {loginUser} from "../../utils/API_account";
 import {LoginCreateForm} from "../LoginCreateForm/LoginCreateForm";
 import {Spinner} from "../common/Spinner/Spinner";
+import {ToastContext} from "../../Context/ToastContext";
 
 interface LoginValues {
     login: string;
@@ -15,8 +16,7 @@ interface Props {
 }
 
 export const LoginFormik = (props: Props) => {
-    const [err, setErr] = useState("");
-    const [message, setMessage] = useState("");
+    const {updateToast} = useContext(ToastContext)
     const [loading, setLoading] = useState(false);
 
     if (loading) {
@@ -44,14 +44,21 @@ export const LoginFormik = (props: Props) => {
                     values: LoginValues,
                     {setSubmitting}: FormikHelpers<LoginValues>
                 ) => {
-                    setErr('');
                     setLoading(true);
                     const submit = async () => {
                         const loggedIn = await loginUser(values.login, values.pwd);
                         if (loggedIn) {
-                            setMessage("Pomyślnie zalogowano!")
+                            updateToast({
+                                class: "check",
+                                title: `Witaj ${values.login}`,
+                                description: "Poprawnie zalogowano do konta"
+                            })
                         } else {
-                            setErr("Dane do logowania są niepoprawne")
+                            updateToast({
+                                class: "error",
+                                title: "Wystąpił błąd",
+                                description: "Dane do logowania są niepoprawne",
+                            })
                         }
 
                         setLoading(false);
@@ -72,8 +79,6 @@ export const LoginFormik = (props: Props) => {
                         >
                             Utwórz konto
                         </button>
-                        {err.length > 0 ? <div className="error">{err}</div> : null}
-                        {message.length > 0 ? <div className="message">{message}</div> : null}
                         <button
                             className="btn-login-submit"
                             type="submit"
