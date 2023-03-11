@@ -3,7 +3,8 @@ import {errorMessage} from "types"
 
 const userUrl = `${apiUrl}/user`
 
-
+//At this moment below function is not neccesary - BE check is login free before adding user. I leave it here for
+// future implementation checking login right after client leaves input
 export async function loginCheck(login: string): Promise<boolean> {
     const res = await fetch(`${userUrl}/login/check/${login}`);
     return await res.json()
