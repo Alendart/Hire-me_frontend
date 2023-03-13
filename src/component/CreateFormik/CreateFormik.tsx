@@ -84,7 +84,7 @@ export const CreateFormik = (props: Props) => {
                             type="button"
                             onClick={() => props.handler()}
                         >
-                            Zaloguj
+                            Logowanie
                         </button>
                         <button
                             className="btn-login-submit"
