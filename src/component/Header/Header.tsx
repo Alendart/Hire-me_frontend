@@ -6,26 +6,28 @@ import {Modal} from "../common/Modal/Modal";
 import {Btn} from "../common/Btn/Btn";
 import {AccountPopup} from "../AccountPopup/AccountPopup";
 import {AuthUserContext} from "../../Context/AuthUserContext";
+import {JobFormik} from "../JobFormik/JobFormik";
 
 
 export const Header = () => {
     const [login, setLogin] = useState(false);
+    const [jobAdd, setJobAdd] = useState(false)
     const {user} = useContext(AuthUserContext)
 
-    const loginModalClose = () => {
-        setLogin(false)
-    }
+    const loginModalClose = () => setLogin(false)
 
-    const loginModalOpen = () => {
-        setLogin(true)
-    }
+    const loginModalOpen = () => setLogin(true)
+
+    const jobModalOpen = () => setJobAdd(true);
+
+    const jobModalClose = () => setJobAdd(false);
 
     return (
         <>
             <header className="header-image">
                 <div className="header_content">
                     <img src={logo} alt="logo"/>
-                    <BtnTemp name="Dodaj nową firmę"/>
+                    <Btn name="Dodaj nową pracę" function={jobModalOpen}/>
                     <div className="button_div">
                         <BtnTemp name="Zmiana widoku"/>
                         {
@@ -39,6 +41,10 @@ export const Header = () => {
                 <>
                     <Modal text="Konto użytkownika" class="login" show={login} handleClose={loginModalClose}>
                         <AccountPopup/>
+                    </Modal>
+                    <Modal text="Dodawanie nowej aplikacji o pracę" class="job" show={jobAdd}
+                           handleClose={jobModalClose}>
+                        <JobFormik/>
                     </Modal>
                 </>
             </header>

@@ -1,0 +1,14 @@
+.job-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.job-submit {
+    width: 70%;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #0a5c86;
+    color: #fff;
+}

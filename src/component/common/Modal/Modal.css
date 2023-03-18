@@ -20,6 +20,17 @@
     box-sizing: border-box;
 }
 
+
+.modal-job {
+    max-width: 600px;
+    min-width: 600px;
+    min-height: 270px;
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
 .modal-header, .modal-footer {
     padding: 10px;
 }
