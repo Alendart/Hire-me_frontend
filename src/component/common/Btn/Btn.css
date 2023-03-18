@@ -3,4 +3,5 @@
     border: #000000 2px solid;
     border-radius: 20px;
     margin: 8px 0;
+    min-width: 60px;
 }
