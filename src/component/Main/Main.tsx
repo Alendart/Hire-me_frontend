@@ -36,7 +36,6 @@ const companyList: CompanyBasicData[] = [
 
 export const Main = () => {
 
-
     return (
         <>
             <div className="app_body">
