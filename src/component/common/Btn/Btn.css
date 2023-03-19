@@ -1,7 +1,14 @@
 .btn {
-    background-color: #afd375;
-    border: #000000 2px solid;
+    background-color: #0a5c86;;
+    border: #ffffff 1px solid;
     border-radius: 20px;
+    color: #ffffff;
     margin: 8px 0;
     min-width: 60px;
+    transition: ease-in-out .3s;
+}
+
+.btn:hover {
+    background-color: rgb(20, 131, 187);
+
 }

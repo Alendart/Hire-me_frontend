@@ -1,0 +1,72 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.job {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    box-sizing: border-box;
+    margin: 10px 20px;
+    padding: 0 10px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    background-color: rgba(248, 249, 250, 0.84);
+    border-radius: 10px;
+
+}
+
+.job-navbar {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.navbar-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-options {
+    display: flex;
+    flex-basis: auto;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.3);
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    transition: ease-in-out .3s;
+}
+
+.navbar-link:hover {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: underline black;
+}
+
+#logo {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 800;
+}
+
+.job-description {
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: beige;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+}
