@@ -5,6 +5,7 @@ import {NewJobEntity} from "types";
 import {JobAddForm} from "../JobAddForm/JobAddForm";
 
 import "./JobFormik.css"
+import {Select} from "../common/FormInputs/Select/Select";
 
 type JobValues = Omit<NewJobEntity, "lat" | "lon" | "userId" | "fileName">
 
@@ -17,6 +18,7 @@ export const JobFormik = () => (
                     jobDesc: '',
                     url: '',
                     address: '',
+                    addressSelect: '',
                 }}
             validationSchema={Yup.object({
                 jobName: Yup.string()
@@ -32,20 +34,27 @@ export const JobFormik = () => (
                     .max(200, "Url nie może mieć więcej niż 200 znaków"),
                 address: Yup.string()
                     .required("Pole wymagane")
-                    .max(100, "Adres nie może mieć więcej niż 100 znaków")
+                    .max(100, "Adres nie może mieć więcej niż 100 znaków"),
+                addressSelect: Yup.string()
+                    .required("Pole wymagane"),
             })}
             onSubmit={(
                 values: JobValues,
                 {setSubmitting}: FormikHelpers<JobValues>
             ) => {
                 setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
+                    console.log(JSON.stringify(values, null, 2));
                     setSubmitting(false);
                 }, 400);
             }}
         >
             <Form>
                 <JobAddForm/>
+                <Select label="Wybierz właściwy adres" name="addressSelect" disabled={true}>
+                    <option value="">Wpisz adres powyżej żeby wybrać właściwą lokalizację</option>
+                    {/*Tutaj musi dziać się magia z pobieraniem danych geolokalizacyjnych dla adresu i przypisywaniu
+                     tych wartości do value a treści wyświetlaniu w opisie*/}
+                </Select>
                 <div className="job-footer">
                     <button
                         className="job-submit"
