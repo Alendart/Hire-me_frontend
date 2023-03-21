@@ -22,7 +22,7 @@ export const Toast = () => {
 
         setTimeout(() => {
             setShow(false);
-        }, 5000)
+        }, 8000)
 
     }, [toast])
 
