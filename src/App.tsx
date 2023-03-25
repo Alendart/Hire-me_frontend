@@ -1,33 +1,39 @@
-import React, {useEffect, useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import './App.css';
 import {MainView} from "./component/views/MainView";
-import {Route, Routes} from "react-router-dom";
+import {Route,Routes} from "react-router-dom";
 import {ApplyView} from "./component/views/ApplyView";
 import {MapView} from "./component/views/MapView";
-import {AuthUser, ToastInfo, ToastInfoWithID} from "./types";
+import {AuthUser,ToastInfo,ToastInfoWithID} from "./types";
 import {ToastContext} from './Context/ToastContext';
 import {v4 as uuid} from 'uuid'
 import {Toast} from "./component/common/Toast/Toast";
 import {AuthUserContext} from './Context/AuthUserContext';
 import {checkCookies} from "./utils/API_account";
 
-function App() {
-    const [toast, setToast] = useState<ToastInfoWithID>({
-        id: '',
-        class: null,
-        description: "",
-        title: '',
-    })
-    const [user, setUser] = useState<AuthUser>({
+export function App() {
+    const [toast,setToast] = useState<ToastInfoWithID[]>([])
+    const [user,setUser] = useState<AuthUser>({
         id: null,
         login: null,
     })
 
     const updateToast = (obj: ToastInfo) => {
-        setToast(() => ({
-            id: uuid(),
-            ...obj
-        }))
+        setToast((prev) => ([
+            {
+                id: uuid(),
+                ...obj
+            },
+            ...prev,
+        ]))
+    }
+
+    const deleteToast = (id: string) => {
+        setToast((prev) => {
+            const itemIndex = prev.findIndex(e => e.id === id);
+            prev.splice(itemIndex,1);
+            return [...prev]
+        })
     }
 
     useEffect(() => {
@@ -56,8 +62,15 @@ function App() {
 
     return (
         <>
-            <AuthUserContext.Provider value={{user, setUser}}>
-                <ToastContext.Provider value={{toast, updateToast}}>
+            <AuthUserContext.Provider value={{
+                user,
+                setUser
+            }}>
+                <ToastContext.Provider value={{
+                    toast,
+                    updateToast,
+                    deleteToast
+                }}>
                     <Toast/>
                     <Routes>
                         <Route path="/" element={<MainView/>}/>
@@ -71,4 +84,3 @@ function App() {
   );
 }
 
-export default App;

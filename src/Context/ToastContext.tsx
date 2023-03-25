@@ -3,12 +3,9 @@ import {ToastContextType} from "../types";
 
 
 export const ToastContext = createContext<ToastContextType>({
-    toast: {
-        id: '',
-        description: '',
-        title: '',
-        class: null,
-    },
+    toast: [],
     updateToast: (obj) => {
-    }
+    },
+    deleteToast: () => {
+    },
 })
