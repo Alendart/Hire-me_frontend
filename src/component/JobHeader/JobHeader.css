@@ -1,0 +1,8 @@
+.job-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    background-color: rgba(161, 198, 235, 0.84);
+    border-radius: 10px;
+
+}

@@ -1,0 +1,41 @@
+.job-navbar {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin: 5px 10px;
+}
+
+.navbar-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-options {
+    display: flex;
+    flex-basis: auto;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    transition: ease-in-out .3s;
+}
+
+.navbar-link:hover {
+    color: rgba(0, 0, 0, 1);
+    text-decoration: underline black;
+}
+
+#logo {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 800;
+}

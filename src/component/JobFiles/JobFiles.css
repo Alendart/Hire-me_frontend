@@ -1,0 +1,10 @@
+.job-files {
+    height: 200px;
+}
+
+.files-box {
+    align-self: center;
+    background-color: purple;
+    width: 150px;
+    height: 150px;
+}

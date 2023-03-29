@@ -1,0 +1,27 @@
+
+.job-status {
+    justify-content: space-around;
+}
+
+.job-status-display, .job-status-changer {
+    align-self: center;
+}
+
+.status-p {
+    text-align: center;
+}
+
+.status-changer {
+    width: 130px;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #0a5c86;
+    color: #fff;
+}
+
+.status-changer:hover {
+    background-color: rgb(20, 131, 187);
+    cursor: pointer;
+}
