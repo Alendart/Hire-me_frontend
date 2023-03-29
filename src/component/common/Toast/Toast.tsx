@@ -23,7 +23,9 @@ export const Toast = () => {
         setDetails(toast)
 
         setTimeout(() => {
-            deleteToast(toast[0].id)
+            if (toast[0]) {
+                deleteToast(toast[0].id)
+            }
         },10000)
 
     },[toast])
