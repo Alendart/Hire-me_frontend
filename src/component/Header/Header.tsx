@@ -1,5 +1,5 @@
-import React, {useContext, useState} from "react";
-import logo from "./Hire_me_logo.png";
+import React,{useContext,useState} from "react";
+import logo from "../../Hire_me_logo.png";
 import {BtnTemp} from "../common/Btn/BtnTemp";
 import "./Header.css"
 import {Modal} from "../common/Modal/Modal";

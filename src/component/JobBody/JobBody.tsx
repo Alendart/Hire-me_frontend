@@ -1,12 +1,12 @@
 import React from "react";
 import {JobEntity} from "types";
-
-import "./JobBody.css"
 import {JobDescription} from "../JobDescription/JobDescription";
 import {JobUrl} from "../JobUrl/JobUrl";
-import {JobFiles} from "../JobFiles/JobFiles";
 import {JobStatus} from "../JobStatus/JobStatus";
 import {JobAddress} from "../JobAddress/JobAddress";
+import {JobFiles} from "../JobFiles/JobFiles";
+
+import "./JobBody.css"
 
 interface Props {
     data: JobEntity
