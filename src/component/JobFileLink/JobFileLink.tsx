@@ -27,9 +27,10 @@ export const JobFileLink = (props: Props) => (
                         </div>
                     </a>
                     <div className="contribution-link-box">
-                        <a className="contribution-link" target="_blank"
+                        <a className="contribution-link" target="_blank" rel="noreferrer"
                            href="https://icons8.com/icon/emjQ5sYXZdXI/pdf">PDF</a> icon by <a
-                        className="contribution-link" target="_blank" href="https://icons8.com">Icons8</a>
+                        className="contribution-link" target="_blank" rel="noreferrer"
+                        href="https://icons8.com">Icons8</a>
                     </div>
 
                 </div>
