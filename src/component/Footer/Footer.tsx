@@ -1,7 +1,7 @@
 import React from "react";
 import {ArchiveTable} from "../ArchiveTable/ArchiveTable";
 import {BtnTemp} from "../common/Btn/BtnTemp";
-import {applicationStatus} from "../../types";
+import {applicationStatus} from "types";
 
 
 import "./Footer.css"

@@ -1,8 +1,9 @@
 import React from "react";
 
 import "./Main.css"
-import {applicationStatus, CompanyBasicData} from "../../types";
+import {CompanyBasicData} from "../../types";
 import {CompanyListTable} from "../CompanyListTable/CompanyListTable";
+import {applicationStatus} from "types";
 
 
 const companyList: CompanyBasicData[] = [

@@ -7,6 +7,7 @@ import {chooseSelectedFile,listAllFiles} from "../../utils/API_files";
 import {Select} from "../common/FormInputs/Select/Select";
 import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
+import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 
 interface SelectValues {
     fileSelect: string
@@ -72,16 +73,16 @@ export const FileSelectForm = () => {
                 }
             >
                 <Form>
-                    <Select label="Wybierz istniejący plik" name="fileSelect">
-                        <option value="">Wybierz plik z listy</option>
+                    <Select label="Wybierz jeden z istniejących plików" name="fileSelect">
+                        <option value="">Dostępne pliki CV...</option>
                         {
                             selectData ?
                                 selectData.map((e,i) => <option key={i} value={e}>{e}</option>)
                                 : null
                         }
                     </Select>
-                    <div>
-                        <button type="submit">Wybierz</button>
+                    <div className="file-footer">
+                        <SubmitBtn name="Wybierz" class="file"/>
                     </div>
                 </Form>
             </Formik>

@@ -1,4 +1,4 @@
-import {applicationStatus,CreateFormJobEntity,ErrorMessage,JobEntity,TableJobEntity} from "types";
+import {applicationStatusString,CreateFormJobEntity,ErrorMessage,JobEntity,TableJobEntity} from "types";
 import {apiUrl} from "../config/api_config";
 import {JobList} from "../types/API_job.types";
 
@@ -46,13 +46,17 @@ export async function createJob(data: CreateFormJobEntity): Promise<string | Err
 
 }
 
-export async function updateJobStatus(newStatus: applicationStatus,jobId: string): Promise<boolean | ErrorMessage | any> {
+export async function updateJobStatus(newStatus: applicationStatusString,jobId: string): Promise<boolean | ErrorMessage | any> {
     try {
         const res = await fetch(`${jobUrl}/job`,{
-            method: "PATCH",credentials: "include",headers: {
+            method: "PATCH",
+            credentials: "include",
+            headers: {
                 "Content-Type": "application/json"
-            },body: JSON.stringify({
-                newStatus,jobId,
+            },
+            body: JSON.stringify({
+                newStatus,
+                jobId,
             }),
         })
 

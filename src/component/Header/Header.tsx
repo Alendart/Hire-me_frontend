@@ -27,23 +27,32 @@ export const Header = () => {
             <header className="header-image">
                 <div className="header_content">
                     <img src={logo} alt="logo"/>
-                    <Btn name="Dodaj nową pracę" function={jobModalOpen}/>
+                    <Btn class="job-add" name="Dodaj nową pracę" function={jobModalOpen}/>
                     <div className="button_div">
                         <BtnTemp name="Zmiana widoku"/>
                         {
                             user.id ?
-                                <Btn name={`${user.login}`} function={loginModalOpen}/>
+                                <Btn class="account" name={`${user.login}`} function={loginModalOpen}/>
                                 :
-                                <Btn name="Konto" function={loginModalOpen}/>
+                                <Btn class="account" name="Konto" function={loginModalOpen}/>
                         }
                     </div>
                 </div>
                 <>
-                    <Modal text="Konto użytkownika" class="login" show={login} handleClose={loginModalClose}>
+                    <Modal
+                        text="Konto użytkownika"
+                        class="login"
+                        show={login}
+                        handleClose={loginModalClose}
+                    >
                         <AccountPopup/>
                     </Modal>
-                    <Modal text="Dodawanie nowej aplikacji o pracę" class="job" show={jobAdd}
-                           handleClose={jobModalClose}>
+                    <Modal
+                        text="Dodawanie nowej aplikacji o pracę"
+                        class="job"
+                        show={jobAdd}
+                        handleClose={jobModalClose}
+                    >
                         <JobFormik/>
                     </Modal>
                 </>

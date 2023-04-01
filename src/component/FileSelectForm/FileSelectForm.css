@@ -2,7 +2,5 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-left: 2px double;
-    padding-left: 30px;
-    width: 200px;
+    width: 100%;
 }

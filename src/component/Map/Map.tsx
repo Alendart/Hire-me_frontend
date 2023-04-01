@@ -4,7 +4,7 @@ import {MapContainer,Marker,Popup,TileLayer} from "react-leaflet";
 import "./Map.css"
 import "../../utils/fix-map-icon"
 import 'leaflet/dist/leaflet.css'
-import {applicationStatus} from "../../types";
+import {applicationStatus} from "types";
 
 interface Props {
     address: string;

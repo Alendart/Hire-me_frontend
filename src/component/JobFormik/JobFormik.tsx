@@ -10,7 +10,8 @@ import {geoCoding} from "../../utils/API_geoCoding";
 import {ToastContext} from "../../Context/ToastContext";
 import {createJob} from "../../utils/API_job";
 import {Spinner} from "../common/Spinner/Spinner";
-import {Navigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 
 
 interface JobFormValues extends Omit<NewJobEntity,"lat" | "lon" | "userId" | "fileName"> {
@@ -24,12 +25,9 @@ interface JobValues extends Omit<NewJobEntity,"lat" | "lon" | "userId" | "fileNa
 export const JobFormik = () => {
     const [data,setData] = useState<string[][]>([]);
     const [loading,setLoading] = useState<boolean>(false);
-    const [newJob,setNewJob] = useState<string>('');
     const {updateToast} = useContext(ToastContext);
+    const navigate = useNavigate()
 
-    if (newJob) {
-        return <Navigate to={`/apply/${newJob}`}/>
-    }
 
     return (<>
             <Formik
@@ -96,7 +94,7 @@ export const JobFormik = () => {
                                     title: "Dodano ofertę",
                                     description: `Poprawnie dodano kolejną ofertę o pracę o id ${id}`
                                 })
-                                setTimeout(() => setNewJob(id),2000);
+                                setTimeout(() => navigate(`/apply/${id}`),2000);
                             } else if (id.err) {
                                 updateToast({
                                     class: "error",title: "Błąd",description: id.err
@@ -121,12 +119,7 @@ export const JobFormik = () => {
                         {data.map(e => <option value={`${e[1]}|${e[2]}`}>{e[0]}</option>)}
                     </Select> : null}
                     <div className="job-footer">
-                        <button
-                            className="job-submit"
-                            type="submit"
-                        >
-                            Dodaj nową ofertę pracy
-                        </button>
+                        <SubmitBtn name="Dodaj nową ofertę pracy" class="job"/>
                     </div>
                 </Form>}
             </Formik>

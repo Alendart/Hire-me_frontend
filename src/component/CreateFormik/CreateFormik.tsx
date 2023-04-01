@@ -1,10 +1,12 @@
-import React, {useContext, useState} from "react";
+import React,{useContext,useState} from "react";
 import * as Yup from "yup";
-import {Form, Formik, FormikHelpers} from "formik";
+import {Form,Formik,FormikHelpers} from "formik";
 import {createUser} from "../../utils/API_account";
 import {LoginCreateForm} from "../LoginCreateForm/LoginCreateForm";
 import {Spinner} from "../common/Spinner/Spinner";
 import {ToastContext} from "../../Context/ToastContext";
+import {Btn} from "../common/Btn/Btn";
+import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 
 interface CreateValues {
     login: string;
@@ -79,20 +81,8 @@ export const CreateFormik = (props: Props) => {
                 <Form className="login-form">
                     <LoginCreateForm type="create"/>
                     <div className="login-footer">
-                        <button
-                            className="btn-switch"
-                            type="button"
-                            onClick={() => props.handler()}
-                        >
-                            Logowanie
-                        </button>
-                        <button
-                            className="btn-login-submit"
-                            type="submit"
-                        >
-                            Zarejestruj
-                        </button>
-
+                        <SubmitBtn name="Zarejestruj" class="login"/>
+                        <Btn name="Logowanie" class="switch" function={props.handler}/>
                     </div>
                 </Form>
             </Formik>

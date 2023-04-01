@@ -7,6 +7,7 @@ import {addFile} from "../../utils/API_files";
 import "./JobFileAddingForm.css"
 import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
+import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 
 const fileTypes = [
     "application/pdf",
@@ -109,8 +110,8 @@ export const JobFileAddingForm = () => {
                 {
                     formik => (
                         <form onSubmit={formik.handleSubmit}>
-                            <TextInput label="Dodaj nowy plik" name="fileName" type="text"
-                                       placeholder="Wpisz nazwę dla pliku"/>
+                            <TextInput label="Podaj nazwę pliku" name="fileName" type="text"
+                                       placeholder="Nazwa pliku..."/>
                             <input
                                 id="file"
                                 type="file"
@@ -123,7 +124,9 @@ export const JobFileAddingForm = () => {
                             {formik.touched.file && formik.errors.file ? (
                                 <div>{formik.errors.file}</div>
                             ) : null}
-                            <button type="submit">Zapisz</button>
+                            <div className="file-footer">
+                                <SubmitBtn name="Zapisz" class="file"/>
+                            </div>
                         </form>
                     )
                 }

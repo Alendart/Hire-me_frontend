@@ -1,4 +1,4 @@
-import {applicationStatus} from "./appStatus";
+import {applicationStatus} from "types";
 
 export interface CompanyBasicData {
     id: string;
