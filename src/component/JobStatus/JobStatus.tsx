@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import {applicationStatus} from "types";
 
 import "./JobStatus.css"
+import {Btn} from "../common/Btn/Btn";
+import {Modal} from "../common/Modal/Modal";
+import {JobStatusSelectForm} from "../JobStatusSelectForm/JobStatusSelectForm";
 
 
 interface Props {
@@ -9,6 +12,7 @@ interface Props {
 }
 
 export const JobStatus = (props: Props) => {
+    const [show,setShow] = useState<boolean>(false);
 
 
     return (
@@ -17,7 +21,10 @@ export const JobStatus = (props: Props) => {
                 <p className="status-p">Aktualny status podania:<br/> <strong>{props.status}</strong></p>
             </div>
             <div className="job-status-changer">
-                <button className="status-changer">Zmiana statusu</button>
+                <Btn name="Zmiana statusu" class="status-changer" function={() => setShow(true)}/>
+                <Modal text="Wybierz nowy status" class="status" show={show} handleClose={() => setShow(false)}>
+                    <JobStatusSelectForm/>
+                </Modal>
             </div>
         </div>
     )

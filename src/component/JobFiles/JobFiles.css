@@ -7,6 +7,7 @@
 .file-box {
     display: flex;
     justify-content: space-between;
+    align-self: center;
     width: 30%;
     border-radius: 10px;
 }
