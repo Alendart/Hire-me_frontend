@@ -1,11 +1,11 @@
 import React from "react";
-import {CompanyBasicData} from "../../types";
+import {TableJobEntity} from "types";
 import {OneRow} from "../common/OneRow/OneRow";
 
 import "./CompanyListTable.css"
 
 interface Props {
-    list: CompanyBasicData[]
+    list: TableJobEntity[]
 }
 
 export const CompanyListTable = (props: Props) => {
@@ -17,10 +17,8 @@ export const CompanyListTable = (props: Props) => {
                 <thead>
                 <tr>
                     <th>Nazwa firmy</th>
-                    <th>Szczegóły</th>
                     <th>Status</th>
-                    <th>Cross</th>
-                    <th>Check</th>
+                    <th>Usuń</th>
                 </tr>
                 </thead>
                 <tbody>

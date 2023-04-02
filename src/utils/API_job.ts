@@ -1,14 +1,14 @@
 import {applicationStatusString,CreateFormJobEntity,ErrorMessage,JobEntity,TableJobEntity} from "types";
 import {apiUrl} from "../config/api_config";
-import {JobList} from "../types/API_job.types";
 
 
 const jobUrl = `${apiUrl}/apply`
 
-export async function listAllActiveJobs(): Promise<JobList | null | any> {
+export async function listAllActiveJobs(): Promise<TableJobEntity[] | null | any> {
     try {
         const res = await fetch(`${jobUrl}/`,{
-            method: "GET",credentials: "include",
+            method: "GET",
+            credentials: "include",
         })
 
         return await res.json()
@@ -67,10 +67,25 @@ export async function updateJobStatus(newStatus: applicationStatusString,jobId: 
 
 }
 
-export async function listAllArchiveJobs(): Promise<TableJobEntity[] | null | any> {
+export async function listLastArchiveJobs(): Promise<TableJobEntity | null | any> {
     try {
         const res = await fetch(`${jobUrl}/archive`,{
-            method: "GET",credentials: "include",
+            method: "GET",
+            credentials: "include",
+        })
+
+        return await res.json()
+    } catch (e) {
+        return e
+    }
+
+}
+
+export async function listAllArchiveJobs(): Promise<TableJobEntity[] | null | any> {
+    try {
+        const res = await fetch(`${jobUrl}/archive/all`,{
+            method: "GET",
+            credentials: "include",
         })
 
         return await res.json()

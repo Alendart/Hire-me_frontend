@@ -18,8 +18,11 @@ interface Props {
 }
 
 export const LoginFormik = (props: Props) => {
-    const {updateToast} = useContext(ToastContext)
-    const [loading, setLoading] = useState(false);
+    const {
+        updateToast,
+        updateToastWithValidation
+    } = useContext(ToastContext)
+    const [loading,setLoading] = useState(false);
 
     if (loading) {
         return <Spinner/>
@@ -48,27 +51,26 @@ export const LoginFormik = (props: Props) => {
                 ) => {
                     setLoading(true);
                     const submit = async () => {
-                        const loggedIn = await loginUser(values.login, values.pwd);
+                        const loggedIn = await loginUser(values.login,values.pwd);
                         if (loggedIn) {
-                            updateToast({
-                                class: "check",
-                                title: `Witaj ${values.login}`,
-                                description: "Poprawnie zalogowano do konta"
-                            })
+                            updateToastWithValidation(
+                                loggedIn,
+                                `Witaj ${values.login}`,
+                                "Poprawnie zalogowano do konta",
+                            )
                         } else {
+
                             updateToast({
-                                class: "error",
-                                title: "Wystąpił błąd",
-                                description: "Dane do logowania są niepoprawne",
+                                class: "warning",
+                                title: "Dane niepoprawne",
+                                description: "Login i/lub hasło są niepoprawne",
                             })
                         }
-
-                        setLoading(false);
-                        setSubmitting(false);
                     }
-
                     submit();
 
+                    setLoading(false);
+                    setSubmitting(false);
                 }}
             >
                 <Form className="login-form">

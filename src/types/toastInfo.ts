@@ -2,6 +2,7 @@ export type ToastContextType = {
     toast: ToastInfoWithID[] | [];
     updateToast: (obj: ToastInfo) => void;
     deleteToast: (id: string) => void;
+    updateToastWithValidation: (param: any,title: string,message: string) => void;
 }
 
 export interface ToastInfoWithID {

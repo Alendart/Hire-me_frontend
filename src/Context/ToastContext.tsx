@@ -8,4 +8,6 @@ export const ToastContext = createContext<ToastContextType>({
     },
     deleteToast: () => {
     },
+    updateToastWithValidation: () => {
+    },
 })

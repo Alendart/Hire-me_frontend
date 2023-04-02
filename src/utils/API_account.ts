@@ -31,14 +31,22 @@ export async function createUser(login: string,pwd: string): Promise<string | Er
     return await res.json()
 }
 
-export async function loginUser(login: string,pwd: string): Promise<boolean | ErrorMessage> {
-    const res = await fetch(`${userUrl}/login`,{
-        method: "POST",credentials: "include",headers: {
-            "Content-Type": "application/json"
-        },body: JSON.stringify({
-            login: login,pwd: pwd
-        }),
+export async function loginUser(login: string,pwd: string): Promise<boolean | ErrorMessage | any> {
+    try {
+        const res = await fetch(`${userUrl}/login`,{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                login: login,
+                pwd: pwd
+            }),
 
-    })
-    return await res.json()
+        })
+        return await res.json()
+    } catch (e) {
+        return e
+    }
 }
