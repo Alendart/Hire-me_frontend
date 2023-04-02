@@ -52,7 +52,7 @@ export function App() {
     }
 
     const updateToastWithValidation = (param: any,title: string,message: string) => {
-        //TODO Dopisać przekazywanie funkcji jeżeli potrzebne
+        //Na razie nie wykorzystywane w projekcie - jeżeli zostanie czas można przebudować wyświetlanie Toastów.
         if (param.err) {
             updateToast({
                 class: "error",

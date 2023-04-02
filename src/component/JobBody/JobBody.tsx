@@ -9,7 +9,8 @@ import {JobFiles} from "../JobFiles/JobFiles";
 import "./JobBody.css"
 
 interface Props {
-    data: JobEntity
+    id: string;
+    data: JobEntity;
 }
 
 export const JobBody = (props: Props) => {
@@ -23,7 +24,7 @@ export const JobBody = (props: Props) => {
             <JobUrl link={props.data.url}/>
             <JobAddress data={props.data}/>
             <JobFiles fileName={props.data.fileName}/>
-            <JobStatus status={props.data.jobStatus}/>
+            <JobStatus id={props.id} status={props.data.jobStatus}/>
         </section>
     )
 }

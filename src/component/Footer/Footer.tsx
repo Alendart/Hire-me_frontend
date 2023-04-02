@@ -9,10 +9,12 @@ import {listLastArchiveJobs} from "../../utils/API_job";
 import {Spinner} from "../common/Spinner/Spinner";
 import {Btn} from "../common/Btn/Btn";
 import {useNavigate} from "react-router-dom";
+import {MainRefreshContext} from "../../Context/MainRefreshContext";
 
 
 export const Footer = () => {
-    const {updateToast} = useContext(ToastContext)
+    const {updateToast} = useContext(ToastContext);
+    const {mainRefresh} = useContext(MainRefreshContext);
     const navigate = useNavigate();
     const [last,setLast] = useState<TableJobEntity>();
     const [blank,setBlank] = useState<boolean>(false);
@@ -22,6 +24,7 @@ export const Footer = () => {
 
         (async () => {
             setLoading(true);
+            setBlank(false);
             const res = await listLastArchiveJobs();
             if (res) {
                 if (res.err) {
@@ -45,7 +48,7 @@ export const Footer = () => {
             setLoading(false);
         })()
 
-    },[])
+    },[mainRefresh])
 
     if (loading) {
         return <Spinner/>

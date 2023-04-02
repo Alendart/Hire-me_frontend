@@ -67,7 +67,7 @@ export const ApplyView = () => {
                     jobData ?
                         <div className="job-overlay">
                             <JobHeader/>
-                            <JobBody data={jobData}/>
+                            <JobBody id={id as string} data={jobData}/>
                         </div>
                         :
                         null

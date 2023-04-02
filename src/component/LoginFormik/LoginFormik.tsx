@@ -8,6 +8,8 @@ import {ToastContext} from "../../Context/ToastContext";
 import {Btn} from "../common/Btn/Btn";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 import {ModalShowContext} from "../../Context/ModalShowContext";
+import {useNavigate} from "react-router-dom";
+import {AuthUserContext} from "../../Context/AuthUserContext";
 
 interface LoginValues {
     login: string;
@@ -19,11 +21,11 @@ interface Props {
 }
 
 export const LoginFormik = (props: Props) => {
-    const {
-        updateToast,
-    } = useContext(ToastContext);
+    const {updateToast} = useContext(ToastContext);
     const {updateModalData} = useContext(ModalShowContext);
+    const {setUser} = useContext(AuthUserContext);
     const [loading,setLoading] = useState(false);
+    const navigate = useNavigate();
 
     if (loading) {
         return <Spinner/>
@@ -73,6 +75,11 @@ export const LoginFormik = (props: Props) => {
                                     description: "Poprawnie zalogowano do konta",
                                 })
                                 updateModalData();
+                                setUser({
+                                    login: values.login,
+                                    id: loggedIn
+                                });
+                                navigate('/')
                             }
                         } else {
                             updateToast({

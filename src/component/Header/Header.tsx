@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect,useState} from "react";
 import logo from "../../Hire_me_logo.png";
 import {BtnTemp} from "../common/Btn/BtnTemp";
 import "./Header.css"
@@ -8,24 +8,41 @@ import {AccountPopup} from "../AccountPopup/AccountPopup";
 import {AuthUserContext} from "../../Context/AuthUserContext";
 import {JobFormik} from "../JobFormik/JobFormik";
 import {ModalShowContext} from "../../Context/ModalShowContext";
+import {MainRefreshContext} from "../../Context/MainRefreshContext";
+import {NavLink} from "react-router-dom";
 
 
 export const Header = () => {
     const {user} = useContext(AuthUserContext);
     const {updateModalData} = useContext(ModalShowContext);
+    const {mainRefresh} = useContext(MainRefreshContext)
+    const [userId,setUserId] = useState<string>('');
+
+    useEffect(() => {
+        if (user.id) {
+            setUserId(user.id);
+        }
+    },[user,mainRefresh])
 
     return (
         <>
             <header className="header-image">
                 <div className="header_content">
-                    <img src={logo} alt="logo"/>
-                    <Btn class="job-add" name="Dodaj nową pracę" function={() => updateModalData("JobFormik")}/>
+                    <NavLink to={'/'}><img src={logo} alt="logo"/></NavLink>
+                    {
+                        userId ?
+                            <Btn class="job-add" name="Dodaj nową pracę" function={() => updateModalData("JobFormik")}/>
+                            : null
+                    }
                     <div className="button_div">
-                        <BtnTemp name="Zmiana widoku"/>
+
                         {
-                            user.id ?
-                                <Btn class="account" name={`${user.login}`}
-                                     function={() => updateModalData("AccountPopup")}/>
+                            userId ?
+                                <>
+                                    <BtnTemp name="Zmiana widoku"/>
+                                    <Btn class="account" name={`${user.login}`}
+                                         function={() => updateModalData("AccountPopup")}/>
+                                </>
                                 :
                                 <Btn class="account" name="Konto" function={() => updateModalData("AccountPopup")}/>
                         }

@@ -31,7 +31,7 @@ export async function createUser(login: string,pwd: string): Promise<string | Er
     return await res.json()
 }
 
-export async function loginUser(login: string,pwd: string): Promise<boolean | ErrorMessage | any> {
+export async function loginUser(login: string,pwd: string): Promise<string | false | ErrorMessage | any> {
     try {
         const res = await fetch(`${userUrl}/login`,{
             method: "POST",

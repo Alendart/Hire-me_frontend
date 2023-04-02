@@ -9,6 +9,7 @@ import {ModalShowContext} from "../../Context/ModalShowContext";
 
 
 interface Props {
+    id: string;
     status: applicationStatus
 }
 
@@ -24,7 +25,7 @@ export const JobStatus = (props: Props) => {
                 <Btn name="Zmiana statusu" class="status-changer"
                      function={() => updateModalData("JobStatusSelectForm")}/>
                 <Modal id="JobStatusSelectForm" text="Wybierz nowy status" class="status">
-                    <JobStatusSelectForm/>
+                    <JobStatusSelectForm id={props.id}/>
                 </Modal>
             </div>
         </div>

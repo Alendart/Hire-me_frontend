@@ -7,34 +7,34 @@ import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 
 
 import "./JobStatusSelectForm.css"
-import {useParams} from "react-router-dom";
 import {updateJobStatus} from "../../utils/API_job";
 import {applicationStatus,applicationStatusString} from "types";
 import {ToastContext} from "../../Context/ToastContext";
 import {JobRefreshContext} from "../../Context/JobRefreshContext";
 import {ModalShowContext} from "../../Context/ModalShowContext";
+import {MainRefreshContext} from "../../Context/MainRefreshContext";
 
 interface SelectValue {
     status: applicationStatusString;
 }
 
-export const JobStatusSelectForm = () => {
+interface Props {
+    id: string;
+}
+
+export const JobStatusSelectForm = (props: Props) => {
     const {updateToast} = useContext(ToastContext)
     const {updateModalData} = useContext(ModalShowContext);
     const {updateJobRefresh} = useContext(JobRefreshContext);
+    const {updateMainRefresh} = useContext(MainRefreshContext);
     const [data,setData] = useState<string[]>(['']);
     const [value,setValue] = useState<string[]>([''])
-    const {id} = useParams();
 
     useEffect(() => {
         const keys = Object.keys(applicationStatus);
         const values = Object.values(applicationStatus);
         setData(keys);
         setValue(values);
-        console.log({
-            keys,
-            values
-        })
     },[])
 
     return (
@@ -54,8 +54,8 @@ export const JobStatusSelectForm = () => {
                         values: SelectValue,
                         {setSubmitting}: FormikHelpers<SelectValue>
                     ) => {
-                        if (id) {
-                            const res = await updateJobStatus(values.status,id)
+                        if (props.id) {
+                            const res = await updateJobStatus(values.status,props.id)
                             if (res === true) {
                                 updateToast({
                                     class: "check",
@@ -63,6 +63,7 @@ export const JobStatusSelectForm = () => {
                                     description: "Poprawnie zmieniono status",
                                 });
                                 updateJobRefresh();
+                                updateMainRefresh();
                                 updateModalData();
                             } else if (res.err) {
                                 updateToast({
