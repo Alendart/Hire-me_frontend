@@ -12,6 +12,7 @@ import {updateJobStatus} from "../../utils/API_job";
 import {applicationStatus,applicationStatusString} from "types";
 import {ToastContext} from "../../Context/ToastContext";
 import {JobRefreshContext} from "../../Context/JobRefreshContext";
+import {ModalShowContext} from "../../Context/ModalShowContext";
 
 interface SelectValue {
     status: applicationStatusString;
@@ -19,6 +20,7 @@ interface SelectValue {
 
 export const JobStatusSelectForm = () => {
     const {updateToast} = useContext(ToastContext)
+    const {updateModalData} = useContext(ModalShowContext);
     const {updateJobRefresh} = useContext(JobRefreshContext);
     const [data,setData] = useState<string[]>(['']);
     const [value,setValue] = useState<string[]>([''])
@@ -61,6 +63,7 @@ export const JobStatusSelectForm = () => {
                                     description: "Poprawnie zmieniono status",
                                 });
                                 updateJobRefresh();
+                                updateModalData();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",

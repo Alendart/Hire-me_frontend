@@ -9,6 +9,7 @@ import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 import {JobRefreshContext} from "../../Context/JobRefreshContext";
+import {ModalShowContext} from "../../Context/ModalShowContext";
 
 const fileTypes = [
     "application/pdf",
@@ -26,6 +27,7 @@ export const JobFileAddingForm = () => {
     const fileRef = useRef(null);
     const {updateToast} = useContext(ToastContext);
     const {updateJobRefresh} = useContext(JobRefreshContext);
+    const {updateModalData} = useContext(ModalShowContext);
     const {id} = useParams()
 
     return (
@@ -86,6 +88,7 @@ export const JobFileAddingForm = () => {
                                     description: "CV zostało poprawnie dodane do zgłoszenia",
                                 })
                                 updateJobRefresh();
+                                updateModalData();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",

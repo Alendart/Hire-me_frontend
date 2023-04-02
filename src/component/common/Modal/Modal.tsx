@@ -1,19 +1,27 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import "./Modal.css";
+import {ModalShowContext} from "../../../Context/ModalShowContext";
 
 interface Props {
+    id: string,
     text: string;
     class: string;
-    show: boolean;
-    handleClose: () => any;
     children: JSX.Element;
 }
 
 
 export const Modal = (props: Props) => {
+    const {
+        modal,
+        updateModalData
+    } = useContext(ModalShowContext);
 
-    if (!props.show) {
+    if (!modal.show) {
+        return null
+    }
+
+    if (modal.id !== props.id) {
         return null
     }
 
@@ -21,12 +29,12 @@ export const Modal = (props: Props) => {
         <>
             <div
                 className="overlay"
-                onMouseDown={() => props.handleClose()}
+                onMouseDown={() => updateModalData()}
             >
                 <div className={`modal-${props.class}`} onMouseDown={e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h2>{props.text}</h2>
-                        <button className="btn-modal-close" onClick={() => props.handleClose()}></button>
+                        <button className="btn-modal-close" onClick={() => updateModalData()}></button>
                     </div>
                     <div className="modal-content">
                         {props.children}

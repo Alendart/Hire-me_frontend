@@ -9,6 +9,7 @@ import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
 import {JobRefreshContext} from "../../Context/JobRefreshContext";
+import {ModalShowContext} from "../../Context/ModalShowContext";
 
 interface SelectValues {
     fileSelect: string
@@ -17,6 +18,7 @@ interface SelectValues {
 export const FileSelectForm = () => {
     const [selectData,setSelectData] = useState<string[]>([]);
     const {updateJobRefresh} = useContext(JobRefreshContext);
+    const {updateModalData} = useContext(ModalShowContext);
     const {updateToast} = useContext(ToastContext);
     const {id} = useParams();
 
@@ -56,6 +58,7 @@ export const FileSelectForm = () => {
                                     description: "Poprawnie załączono plik pod zgłoszenie"
                                 });
                                 updateJobRefresh();
+                                updateModalData();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",

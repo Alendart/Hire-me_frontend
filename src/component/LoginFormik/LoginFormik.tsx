@@ -7,6 +7,7 @@ import {Spinner} from "../common/Spinner/Spinner";
 import {ToastContext} from "../../Context/ToastContext";
 import {Btn} from "../common/Btn/Btn";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
+import {ModalShowContext} from "../../Context/ModalShowContext";
 
 interface LoginValues {
     login: string;
@@ -20,8 +21,8 @@ interface Props {
 export const LoginFormik = (props: Props) => {
     const {
         updateToast,
-        updateToastWithValidation
-    } = useContext(ToastContext)
+    } = useContext(ToastContext);
+    const {updateModalData} = useContext(ModalShowContext);
     const [loading,setLoading] = useState(false);
 
     if (loading) {
@@ -53,13 +54,27 @@ export const LoginFormik = (props: Props) => {
                     const submit = async () => {
                         const loggedIn = await loginUser(values.login,values.pwd);
                         if (loggedIn) {
-                            updateToastWithValidation(
-                                loggedIn,
-                                `Witaj ${values.login}`,
-                                "Poprawnie zalogowano do konta",
-                            )
+                            if (loggedIn.err) {
+                                updateToast({
+                                    class: "error",
+                                    title: "Wystąpił błąd",
+                                    description: loggedIn.err,
+                                })
+                            } else if (loggedIn instanceof Error) {
+                                updateToast({
+                                    class: "error",
+                                    title: "Wystąpił błąd",
+                                    description: "Wewnętrzny błąd serwisu, proszę spróbować ponownie",
+                                })
+                            } else {
+                                updateToast({
+                                    class: "check",
+                                    title: `Witaj ${values.login}`,
+                                    description: "Poprawnie zalogowano do konta",
+                                })
+                                updateModalData();
+                            }
                         } else {
-
                             updateToast({
                                 class: "warning",
                                 title: "Dane niepoprawne",

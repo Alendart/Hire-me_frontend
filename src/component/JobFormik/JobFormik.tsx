@@ -76,7 +76,8 @@ export const JobFormik = () => {
                         if (!values.addressSelect[0]) {
                             updateToast({
                                 class: "warning",
-                                title: "Wskaż adres",description: "Musisz wybrać dokładny adres z listy rozwijanej"
+                                title: "Wskaż adres",
+                                description: "Musisz wybrać dokładny adres z listy rozwijanej",
                             })
                         } else {
                             setLoading(true);
@@ -94,7 +95,7 @@ export const JobFormik = () => {
                                     title: "Dodano ofertę",
                                     description: `Poprawnie dodano kolejną ofertę o pracę o id ${id}`
                                 })
-                                setTimeout(() => navigate(`/apply/${id}`),2000);
+                                navigate(`/apply/${id}`);
                             } else if (id.err) {
                                 updateToast({
                                     class: "error",title: "Błąd",description: id.err
