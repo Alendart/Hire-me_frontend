@@ -8,6 +8,7 @@ import {Select} from "../common/FormInputs/Select/Select";
 import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
+import {JobRefreshContext} from "../../Context/JobRefreshContext";
 
 interface SelectValues {
     fileSelect: string
@@ -15,6 +16,7 @@ interface SelectValues {
 
 export const FileSelectForm = () => {
     const [selectData,setSelectData] = useState<string[]>([]);
+    const {updateJobRefresh} = useContext(JobRefreshContext);
     const {updateToast} = useContext(ToastContext);
     const {id} = useParams();
 
@@ -53,6 +55,7 @@ export const FileSelectForm = () => {
                                     title: "Załączono CV",
                                     description: "Poprawnie załączono plik pod zgłoszenie"
                                 });
+                                updateJobRefresh();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",

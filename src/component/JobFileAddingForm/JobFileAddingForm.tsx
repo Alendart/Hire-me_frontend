@@ -8,6 +8,7 @@ import "./JobFileAddingForm.css"
 import {useParams} from "react-router-dom";
 import {ToastContext} from "../../Context/ToastContext";
 import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
+import {JobRefreshContext} from "../../Context/JobRefreshContext";
 
 const fileTypes = [
     "application/pdf",
@@ -23,7 +24,8 @@ const fileSize = 3145728;
 
 export const JobFileAddingForm = () => {
     const fileRef = useRef(null);
-    const {updateToast} = useContext(ToastContext)
+    const {updateToast} = useContext(ToastContext);
+    const {updateJobRefresh} = useContext(JobRefreshContext);
     const {id} = useParams()
 
     return (
@@ -83,6 +85,7 @@ export const JobFileAddingForm = () => {
                                     title: "Dodano CV",
                                     description: "CV zostało poprawnie dodane do zgłoszenia",
                                 })
+                                updateJobRefresh();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",

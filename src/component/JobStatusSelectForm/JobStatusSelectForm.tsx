@@ -11,6 +11,7 @@ import {useParams} from "react-router-dom";
 import {updateJobStatus} from "../../utils/API_job";
 import {applicationStatus,applicationStatusString} from "types";
 import {ToastContext} from "../../Context/ToastContext";
+import {JobRefreshContext} from "../../Context/JobRefreshContext";
 
 interface SelectValue {
     status: applicationStatusString;
@@ -18,6 +19,7 @@ interface SelectValue {
 
 export const JobStatusSelectForm = () => {
     const {updateToast} = useContext(ToastContext)
+    const {updateJobRefresh} = useContext(JobRefreshContext);
     const [data,setData] = useState<string[]>(['']);
     const [value,setValue] = useState<string[]>([''])
     const {id} = useParams();
@@ -57,7 +59,8 @@ export const JobStatusSelectForm = () => {
                                     class: "check",
                                     title: "Zrobione",
                                     description: "Poprawnie zmieniono status",
-                                })
+                                });
+                                updateJobRefresh();
                             } else if (res.err) {
                                 updateToast({
                                     class: "error",
@@ -72,6 +75,7 @@ export const JobStatusSelectForm = () => {
                                 })
                             }
                         }
+                        setSubmitting(false);
 
 
                     }

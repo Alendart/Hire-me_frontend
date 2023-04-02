@@ -1,11 +1,3 @@
-* {
-    scroll-behavior: smooth;
-}
-
-a {
-    text-decoration: none;
-}
-
 .job-overlay {
     position: absolute;
     width: 100%;
