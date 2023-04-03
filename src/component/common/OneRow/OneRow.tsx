@@ -28,8 +28,8 @@ export const OneRow = (props: Props) => {
         if (res === true) {
             updateToast({
                 class: "check",
-                title: "Zrobione",
-                description: `Poprawnie zmieniono status ogłoszenia "${props.item.jobName}"`,
+                title: "Przeniesiono do archiwum",
+                description: `Zarchiwizowano ogłoszenie "${props.item.jobName}"`,
             });
             updateMainRefresh();
         } else if (res.err) {

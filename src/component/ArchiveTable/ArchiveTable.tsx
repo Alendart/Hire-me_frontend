@@ -30,8 +30,8 @@ export const ArchiveTable = (props: Props) => {
             if (res === true) {
                 updateToast({
                     class: "check",
-                    title: "Zrobione",
-                    description: `Poprawnie zmieniono status ogłoszenia "${props.item.jobName}"`,
+                    title: "Ogłoszenie przywrócone",
+                    description: `Przywrócono ogłoszenie "${props.item.jobName}"`,
                 });
                 updateMainRefresh();
             } else if (res.err) {
