@@ -5,6 +5,7 @@ import {ModalShowContext} from "../../../Context/ModalShowContext";
 import {MainRefreshContext} from "../../../Context/MainRefreshContext";
 import {updateJobStatus} from "../../../utils/API_job";
 import {ToastContext} from "../../../Context/ToastContext";
+import {Btn} from "../Btn/Btn";
 
 
 interface Props {
@@ -56,8 +57,12 @@ export const OneRow = (props: Props) => {
     return (
         <tr>
             <td className="table-job-name" onClick={click}>{props.item.jobName}</td>
-            <td onClick={statusChange}>{props.item.jobStatus}</td>
-            <td onClick={setStatusOnArchived}>❌</td>
+            <td>
+                <Btn name={props.item.jobStatus} class={"table-status-change"} function={statusChange}/>
+            </td>
+            <td>
+                <p className="table-delete" onClick={setStatusOnArchived}>❌</p>
+            </td>
         </tr>
     )
 }

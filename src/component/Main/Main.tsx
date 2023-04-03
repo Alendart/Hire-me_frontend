@@ -57,8 +57,10 @@ export const Main = () => {
                     <p>Jeszcze nie ma tu nic do wyświetlenia...</p>
                     :
                     <div className="app_body">
-                        <h2>Firmy do których wysłano CV:</h2>
-                        <CompanyListTable list={list}/>
+                        <div className="table-box">
+                            <h2>Firmy do których wysłano CV:</h2>
+                            <CompanyListTable list={list}/>
+                        </div>
                     </div>
 
             }

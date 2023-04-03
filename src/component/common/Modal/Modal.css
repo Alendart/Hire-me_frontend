@@ -81,7 +81,7 @@
     margin-top: 5px;
 }
 
-.file-footer {
+.file-footer, .status-footer {
     border-top: 1px solid #eeeeee;
     padding: 10px 5px;
     display: flex;

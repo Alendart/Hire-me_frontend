@@ -18,7 +18,7 @@
     font-size: 14px;
 }
 
-.btn-submit-file {
+.btn-submit-file, .btn-submit-status {
     width: 60%;
     padding: 10px;
 }

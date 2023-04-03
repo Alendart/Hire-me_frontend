@@ -1,21 +1,43 @@
 table {
     table-layout: fixed;
-    width: 100%;
+    width: 80%;
     padding: 10px;
     border-collapse: collapse;
     margin-left: 20px;
+    text-align: center;
 }
+
+.table-job-name {
+    text-align: left;
+    cursor: pointer;
+}
+
+.table-job-name:hover {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.table-status-change {
+    cursor: alias;
+}
+
+.table-delete {
+    cursor: pointer;
+}
+
 
 thead th:nth-child(1) {
     width: 55%;
+    text-align: left;
+    padding: 15px;
 }
 
 td {
-    padding: 8px;
+
 }
 
 tr:hover {
-    background-color: #afd375;
+    background-color: #afcded;
 }
 
 thead tr:hover {

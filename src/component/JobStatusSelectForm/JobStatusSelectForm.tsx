@@ -86,7 +86,7 @@ export const JobStatusSelectForm = (props: Props) => {
                 }
             >
                 <Form>
-                    <Select label="Nowy status" name="status">
+                    <Select label="Nowy status" name="statusSelect">
                         <option value="">Wybierz nowy status...</option>
                         {
                             data[0] ?
@@ -95,7 +95,9 @@ export const JobStatusSelectForm = (props: Props) => {
                                 null
                         }
                     </Select>
-                    <SubmitBtn name="Wybierz" class="status"/>
+                    <div className="status-footer">
+                        <SubmitBtn name="Wybierz" class="status"/>
+                    </div>
                 </Form>
             </Formik>
         </>

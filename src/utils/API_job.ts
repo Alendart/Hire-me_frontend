@@ -1,4 +1,4 @@
-import {applicationStatusString,CreateFormJobEntity,ErrorMessage,JobEntity,TableJobEntity} from "types";
+import {applicationStatusString,CreateFormJobEntity,ErrorMessage,JobEntity,MapJobEntity,TableJobEntity} from "types";
 import {apiUrl} from "../config/api_config";
 
 
@@ -18,10 +18,25 @@ export async function listAllActiveJobs(): Promise<TableJobEntity[] | null | any
 
 }
 
+export async function listAllActiveJobsWithMapData(): Promise<MapJobEntity[] | null | any> {
+    try {
+        const res = await fetch(`${jobUrl}/map`,{
+            method: "GET",
+            credentials: "include",
+        })
+
+        return await res.json()
+    } catch (e) {
+        return e
+    }
+
+}
+
 export async function collectFullJobData(id: string): Promise<JobEntity | ErrorMessage | any> {
     try {
         const res = await fetch(`${jobUrl}/job/${id}`,{
-            method: "GET",credentials: "include",
+            method: "GET",
+            credentials: "include",
         })
 
         return await res.json();

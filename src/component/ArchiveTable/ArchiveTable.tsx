@@ -57,7 +57,7 @@ export const ArchiveTable = (props: Props) => {
                     <table className="archive-table">
                         <tbody>
                         <tr>
-                            <td onClick={click}>{props.item.jobName}</td>
+                            <td className="table-job-name" onClick={click}>{props.item.jobName}</td>
                             <td>
                                 <Btn name="Przywróć" class="set-active" function={setActive}/>
                             </td>

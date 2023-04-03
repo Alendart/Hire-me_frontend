@@ -1,20 +1,21 @@
 .btn {
-    background-color: #0a5c86;;
+    background-color: #169bc9;;
     border: #ffffff 1px solid;
     border-radius: 20px;
     color: #ffffff;
     margin: 8px 0;
     min-width: 60px;
+    height: 60px;
     transition: ease-in-out .3s;
 }
 
 .btn:hover {
-    background-color: rgb(20, 131, 187);
+    background-color: rgb(62, 178, 238);
+    border: 1px solid rgba(0, 0, 0, 0.62);
     cursor: pointer;
 }
 
 .btn-switch {
-    background-color: #0a5c86;
     border: 0;
     border-radius: 15px;
     width: 30%;
@@ -29,10 +30,29 @@
     margin: 5px;
     border: 1px solid;
     border-radius: 10px;
-    background-color: #0a5c86;
     color: #fff;
 }
 
 .btn-file-modal {
     padding: 20px;
+}
+
+.btn-account {
+    border-radius: 100px;
+    height: 60px;
+}
+
+.btn-map-view {
+    border-radius: 100px;
+    padding: 6px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-set-active, .btn-table-status-change {
+    width: 140px;
+    height: 40px;
 }

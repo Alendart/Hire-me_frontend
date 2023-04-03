@@ -1,3 +1,7 @@
+#logo {
+    height: 75px;
+}
+
 .job-navbar {
     display: flex;
     flex-wrap: inherit;

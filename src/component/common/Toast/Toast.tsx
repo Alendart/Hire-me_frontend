@@ -26,7 +26,7 @@ export const Toast = () => {
             if (toast[0]) {
                 deleteToast(toast[0].id)
             }
-        },10000)
+        },8000)
 
     },[toast])
 

@@ -14,6 +14,7 @@ import {ArchiveView} from "./component/views/ArchiveView";
 import {HomeView} from "./component/views/HomeView";
 import {ModalShowContext} from './Context/ModalShowContext';
 import {ModalData} from "./types/modal.context.types";
+import {UserView} from "./component/views/UserView";
 
 export function App() {
     const [toast,setToast] = useState<ToastInfoWithID[]>([]);
@@ -93,6 +94,7 @@ export function App() {
                         title: "Błąd",
                         description: user.err
                     })
+                    navigate('/home');
                 } else if (user instanceof Error) {
                     updateToast({
                         class: "error",
@@ -138,6 +140,7 @@ export function App() {
                             <Route path="/archive" element={<ArchiveView/>}/>
                             <Route path="/map" element={<MapView/>}/>
                             <Route path="/apply/:id" element={<ApplyView/>}/>
+                            <Route path="/user" element={<UserView/>}/>
                             <Route path="*" element={<MainView/>}/>
                         </Routes>
                     </ModalShowContext.Provider>

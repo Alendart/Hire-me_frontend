@@ -1,6 +1,7 @@
 import React,{useContext,useEffect,useState} from "react";
 import logo from "../../Hire_me_logo.png";
-import {BtnTemp} from "../common/Btn/BtnTemp";
+import mapIcon from "../../map-icon.png";
+import listIcon from "../../list-icon.png";
 import "./Header.css"
 import {Modal} from "../common/Modal/Modal";
 import {Btn} from "../common/Btn/Btn";
@@ -9,7 +10,7 @@ import {AuthUserContext} from "../../Context/AuthUserContext";
 import {JobFormik} from "../JobFormik/JobFormik";
 import {ModalShowContext} from "../../Context/ModalShowContext";
 import {MainRefreshContext} from "../../Context/MainRefreshContext";
-import {NavLink} from "react-router-dom";
+import {NavLink,useLocation} from "react-router-dom";
 
 
 export const Header = () => {
@@ -17,6 +18,7 @@ export const Header = () => {
     const {updateModalData} = useContext(ModalShowContext);
     const {mainRefresh} = useContext(MainRefreshContext)
     const [userId,setUserId] = useState<string>('');
+    const location = useLocation();
 
     useEffect(() => {
         if (user.id) {
@@ -28,20 +30,35 @@ export const Header = () => {
         <>
             <header className="header-image">
                 <div className="header_content">
-                    <NavLink to={'/'}><img src={logo} alt="logo"/></NavLink>
                     {
                         userId ?
-                            <Btn class="job-add" name="Dodaj nową pracę" function={() => updateModalData("JobFormik")}/>
-                            : null
+                            <>
+                                <NavLink to={'/'}><img className="img-logo" src={logo} alt="logo"/></NavLink>
+                                <Btn class="job-add" name="Dodaj nową pracę"
+                                     function={() => updateModalData("JobFormik")}/>
+                            </>
+                            :
+                            <img src={logo} alt="logo"/>
                     }
                     <div className="button_div">
 
                         {
                             userId ?
                                 <>
-                                    <BtnTemp name="Zmiana widoku"/>
-                                    <Btn class="account" name={`${user.login}`}
-                                         function={() => updateModalData("AccountPopup")}/>
+                                    <div className="btn btn-map-view">
+                                        <NavLink to={location.pathname === "/map" ? '/' : '/map'}>
+                                            <img
+                                                src={
+                                                    location.pathname === "/map" ? listIcon : mapIcon
+                                                }
+                                                alt="Map Icon"
+                                                className="map-icon"
+                                            />
+                                        </NavLink>
+                                    </div>
+                                    <NavLink to="/user">
+                                        <Btn class="account" name={`${user.login}`} function={() => null}/>
+                                    </NavLink>
                                 </>
                                 :
                                 <Btn class="account" name="Konto" function={() => updateModalData("AccountPopup")}/>

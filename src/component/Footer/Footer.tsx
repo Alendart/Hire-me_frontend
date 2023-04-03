@@ -65,9 +65,6 @@ export const Footer = () => {
                         <>
                             <ArchiveTable item={last}/>
                             <Btn name="Przejdź do archiwum" class="archive" function={() => navigate('/archive')}/>
-                            <p>Image by <a
-                                href="https://www.freepik.com/free-vector/flat-design-polygonal-background_13264338.htm#query=background%20geometric%20green&position=1&from_view=search&track=ais">Freepik</a>
-                            </p>
                         </>
 
                 }
