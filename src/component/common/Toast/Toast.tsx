@@ -22,11 +22,11 @@ export const Toast = () => {
     useEffect(() => {
         setDetails(toast)
 
-        // setTimeout(() => {
-        //     if (toast[0]) {
-        //         deleteToast(toast[0].id)
-        //     }
-        // },8000)
+        setTimeout(() => {
+            if (toast[0]) {
+                deleteToast(toast[0].id)
+            }
+        },8000)
 
     },[toast])
 
