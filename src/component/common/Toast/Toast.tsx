@@ -22,11 +22,11 @@ export const Toast = () => {
     useEffect(() => {
         setDetails(toast)
 
-        setTimeout(() => {
-            if (toast[0]) {
-                deleteToast(toast[0].id)
-            }
-        },8000)
+        // setTimeout(() => {
+        //     if (toast[0]) {
+        //         deleteToast(toast[0].id)
+        //     }
+        // },8000)
 
     },[toast])
 
@@ -48,8 +48,8 @@ export const Toast = () => {
                                     <button className="toast-button" onClick={() => deleteToast(e.id)}>
                                         X
                                     </button>
-                                    <div className="notification-image">
-                                        <img src={icons[e.class]} alt="icon"/>
+                                    <div className="notification-image-box">
+                                        <img className="notification-image" src={icons[e.class]} alt="icon"/>
                                     </div>
                                     <div>
                                         <p className="notification-title">{e.title}</p>
