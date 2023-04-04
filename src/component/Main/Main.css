@@ -1,18 +1,24 @@
 
 .app_body {
-
-    width: 100%;
-    height: calc(100vh - 295px);
+    width: 97%;
+    height: calc(100vh - 350px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-
+    margin-top: 20px;
 }
 
 h2 {
     align-self: flex-start;
-    margin-left: 10px;
+    margin-left: 45px;
+}
+
+.table-box {
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 

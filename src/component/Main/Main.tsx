@@ -1,47 +1,69 @@
-import React from "react";
+import React,{useContext,useEffect,useState} from "react";
 
 import "./Main.css"
-import {applicationStatus, CompanyBasicData} from "../../types";
 import {CompanyListTable} from "../CompanyListTable/CompanyListTable";
-
-
-const companyList: CompanyBasicData[] = [
-    {
-        id: "Sdaklopkxaklmdw;qd",
-        name: "Wyższa szkoła marketingu",
-        status: applicationStatus.Waiting,
-    },
-    {
-        id: "Sdaklsdad1213opkxaklmdw;qd",
-        name: "Szkoła baletu",
-        status: applicationStatus.Send,
-    },
-    {
-        id: "Sdad1213opkxaklmdw;qd",
-        name: "Poważna praca xD",
-        status: applicationStatus.Appointment,
-    },
-    {
-        id: "Sdaklsdad144354566dw;qd",
-        name: "Janusz.exe",
-        status: applicationStatus.Refused,
-    },
-    {
-        id: "Sdaklsdad1443123124566dw;qd",
-        name: "Śmiech i łzy",
-        status: applicationStatus.Accepted,
-    },
-];
+import {TableJobEntity} from "types";
+import {Spinner} from "../common/Spinner/Spinner";
+import {listAllActiveJobs} from "../../utils/API_job";
+import {ToastContext} from "../../Context/ToastContext";
+import {MainRefreshContext} from "../../Context/MainRefreshContext";
 
 
 export const Main = () => {
+    const {updateToast} = useContext(ToastContext);
+    const {mainRefresh} = useContext(MainRefreshContext);
+    const [list,setList] = useState<TableJobEntity[]>([]);
+    const [blank,setBlank] = useState<boolean>(false);
+    const [loading,setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+
+        (async () => {
+            setLoading(true);
+            setBlank(false);
+            const res = await listAllActiveJobs();
+            if (res) {
+                if (res.err) {
+                    updateToast({
+                        class: "error",
+                        title: "Błąd",
+                        description: res.err,
+                    })
+                } else if (res instanceof Error) {
+                    updateToast({
+                        class: "error",
+                        title: "Błąd",
+                        description: "Wewnętrzny błąd serwisu, proszę spróbować ponownie"
+                    })
+                } else {
+                    setList(res);
+                }
+            } else {
+                setBlank(true);
+            }
+            setLoading(false);
+        })()
+
+    },[mainRefresh])
+
+    if (loading) {
+        return <Spinner/>
+    }
 
     return (
         <>
-            <div className="app_body">
-                <h2>Firmy do których wysłano CV:</h2>
-                <CompanyListTable list={companyList}/>
-            </div>
+            {
+                blank ?
+                    <p>Jeszcze nie ma tu nic do wyświetlenia...</p>
+                    :
+                    <div className="app_body">
+                        <div className="table-box">
+                            <h2>Firmy do których wysłano CV:</h2>
+                            <CompanyListTable list={list}/>
+                        </div>
+                    </div>
+
+            }
         </>
     )
 

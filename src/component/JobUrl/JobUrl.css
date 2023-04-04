@@ -1,0 +1,15 @@
+.job-url {
+    justify-content: flex-start;
+    margin: 30px 18px;
+}
+
+.company-url-text {
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.company-url {
+    align-self: center;
+    text-decoration: none;
+    color: black;
+}

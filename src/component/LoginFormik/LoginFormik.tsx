@@ -1,10 +1,15 @@
-import React, {useContext, useState} from "react";
+import React,{useContext,useState} from "react";
 import * as Yup from "yup";
-import {Form, Formik, FormikHelpers} from "formik";
+import {Form,Formik,FormikHelpers} from "formik";
 import {loginUser} from "../../utils/API_account";
 import {LoginCreateForm} from "../LoginCreateForm/LoginCreateForm";
 import {Spinner} from "../common/Spinner/Spinner";
 import {ToastContext} from "../../Context/ToastContext";
+import {Btn} from "../common/Btn/Btn";
+import {SubmitBtn} from "../common/SubmitBtn/SubmitBtn";
+import {ModalShowContext} from "../../Context/ModalShowContext";
+import {useNavigate} from "react-router-dom";
+import {AuthUserContext} from "../../Context/AuthUserContext";
 
 interface LoginValues {
     login: string;
@@ -16,8 +21,11 @@ interface Props {
 }
 
 export const LoginFormik = (props: Props) => {
-    const {updateToast} = useContext(ToastContext)
-    const [loading, setLoading] = useState(false);
+    const {updateToast} = useContext(ToastContext);
+    const {updateModalData} = useContext(ModalShowContext);
+    const {setUser} = useContext(AuthUserContext);
+    const [loading,setLoading] = useState(false);
+    const navigate = useNavigate();
 
     if (loading) {
         return <Spinner/>
@@ -46,45 +54,52 @@ export const LoginFormik = (props: Props) => {
                 ) => {
                     setLoading(true);
                     const submit = async () => {
-                        const loggedIn = await loginUser(values.login, values.pwd);
+                        const loggedIn = await loginUser(values.login,values.pwd);
                         if (loggedIn) {
-                            updateToast({
-                                class: "check",
-                                title: `Witaj ${values.login}`,
-                                description: "Poprawnie zalogowano do konta"
-                            })
+                            if (loggedIn.err) {
+                                updateToast({
+                                    class: "error",
+                                    title: "Wystąpił błąd",
+                                    description: loggedIn.err,
+                                })
+                            } else if (loggedIn instanceof Error) {
+                                updateToast({
+                                    class: "error",
+                                    title: "Wystąpił błąd",
+                                    description: "Wewnętrzny błąd serwisu, proszę spróbować ponownie",
+                                })
+                            } else {
+                                updateToast({
+                                    class: "check",
+                                    title: `Witaj ${values.login}`,
+                                    description: "Poprawnie zalogowano do konta",
+                                })
+                                updateModalData();
+                                setUser({
+                                    login: values.login,
+                                    id: loggedIn
+                                });
+                                navigate('/')
+                            }
                         } else {
                             updateToast({
-                                class: "error",
-                                title: "Wystąpił błąd",
-                                description: "Dane do logowania są niepoprawne",
+                                class: "warning",
+                                title: "Dane niepoprawne",
+                                description: "Login i/lub hasło są niepoprawne",
                             })
                         }
-
-                        setLoading(false);
-                        setSubmitting(false);
                     }
-
                     submit();
 
+                    setLoading(false);
+                    setSubmitting(false);
                 }}
             >
                 <Form className="login-form">
                     <LoginCreateForm type="login"/>
                     <div className="login-footer">
-                        <button
-                            className="btn-switch"
-                            type="button"
-                            onClick={() => props.handler()}
-                        >
-                            Utwórz konto
-                        </button>
-                        <button
-                            className="btn-login-submit"
-                            type="submit"
-                        >
-                            Zaloguj
-                        </button>
+                        <SubmitBtn name="Zaloguj" class="login"/>
+                        <Btn name="Utwórz konto" class="switch" function={props.handler}/>
                     </div>
                 </Form>
             </Formik>

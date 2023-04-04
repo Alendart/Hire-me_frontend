@@ -43,11 +43,12 @@
 
 .notification-message {
     text-align: left;
-    height: 18px;
+    height: 45px;
     margin: 0 0 0 -1px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: break-spaces;
+    word-wrap: break-word;
 }
 
 .notification-image {

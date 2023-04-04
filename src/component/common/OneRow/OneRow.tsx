@@ -1,24 +1,68 @@
-import React from "react";
-import {BtnTemp} from "../Btn/BtnTemp";
-import {CompanyBasicData} from "../../../types";
+import React,{useContext} from "react";
+import {TableJobEntity} from "types";
+import {useNavigate} from "react-router-dom";
+import {ModalShowContext} from "../../../Context/ModalShowContext";
+import {MainRefreshContext} from "../../../Context/MainRefreshContext";
+import {updateJobStatus} from "../../../utils/API_job";
+import {ToastContext} from "../../../Context/ToastContext";
+import {Btn} from "../Btn/Btn";
 
 
 interface Props {
-    item: CompanyBasicData
+    item: TableJobEntity;
+    passId: (id: string) => any;
 }
 
 export const OneRow = (props: Props) => {
+    const navigate = useNavigate();
+    const {updateToast} = useContext(ToastContext)
+    const {updateModalData} = useContext(ModalShowContext);
+    const {updateMainRefresh} = useContext(MainRefreshContext);
 
+    const statusChange = () => {
+        updateModalData("JobStatusSelectForm");
+        props.passId(props.item.id);
+    }
+
+    const setStatusOnArchived = async () => {
+        const res = await updateJobStatus("Archived",props.item.id);
+        if (res === true) {
+            updateToast({
+                class: "check",
+                title: "Przeniesiono do archiwum",
+                description: `Zarchiwizowano ogłoszenie "${props.item.jobName}"`,
+            });
+            updateMainRefresh();
+        } else if (res.err) {
+            updateToast({
+                class: "error",
+                title: "Błąd",
+                description: res.err,
+            })
+        } else {
+            updateToast({
+                class: "error",
+                title: "Błąd",
+                description: "Wewnętrzny błąd serwisu, proszę spróbować ponownie"
+            })
+        }
+
+    }
+
+
+    const click = () => {
+        navigate(`/apply/${props.item.id}`)
+    }
 
     return (
         <tr>
-            <td>{props.item.name}</td>
+            <td className="table-job-name" onClick={click}>{props.item.jobName}</td>
             <td>
-                <BtnTemp name="Szczegóły"/>
+                <Btn name={props.item.jobStatus} class={"table-status-change"} function={statusChange}/>
             </td>
-            <td>{props.item.status}</td>
-            <td>❌</td>
-            <td>✔</td>
+            <td>
+                <p className="table-delete" onClick={setStatusOnArchived}>❌</p>
+            </td>
         </tr>
     )
 }

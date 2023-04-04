@@ -1,15 +1,18 @@
-import React from "react";
-import {CompanyBasicData} from "../../types";
+import React,{useState} from "react";
+import {TableJobEntity} from "types";
 import {OneRow} from "../common/OneRow/OneRow";
 
 import "./CompanyListTable.css"
+import {Modal} from "../common/Modal/Modal";
+import {JobStatusSelectForm} from "../JobStatusSelectForm/JobStatusSelectForm";
 
 interface Props {
-    list: CompanyBasicData[]
+    list: TableJobEntity[]
 }
 
 export const CompanyListTable = (props: Props) => {
 
+    const [jobId,setJobId] = useState<string>('')
 
     return (
         <>
@@ -17,16 +20,17 @@ export const CompanyListTable = (props: Props) => {
                 <thead>
                 <tr>
                     <th>Nazwa firmy</th>
-                    <th>Szczegóły</th>
                     <th>Status</th>
-                    <th>Cross</th>
-                    <th>Check</th>
+                    <th>Usuń</th>
                 </tr>
                 </thead>
                 <tbody>
-                {props.list.map(e => <OneRow item={e} key={e.id}/>)}
+                {props.list.map(e => <OneRow item={e} passId={setJobId} key={e.id}/>)}
                 </tbody>
             </table>
+            <Modal id="JobStatusSelectForm" text="Wybierz nowy status" class="status">
+                <JobStatusSelectForm id={jobId}/>
+            </Modal>
         </>
     )
 }

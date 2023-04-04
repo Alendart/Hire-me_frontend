@@ -1,29 +1,36 @@
-img {
+.img-logo {
     height: 75px;
+    margin-left: 30px
 }
 
 header {
     height: 75px;
     width: 100%;
-    padding: 5px 10px;
+    padding: 10px 0;
 
+}
+
+.map-icon {
+    height: 40px;
 }
 
 .header_content {
     height: inherit;
     display: flex;
     justify-content: space-between;
-    margin: 0 10px;
+    margin: 8px 30px;
+    padding: 5px;
+    background-color: rgba(161, 198, 235, 0.84);
+    border-radius: 10px;
 }
 
 .header-image {
-    background-image: url("./Header_background_v4.jpg");
-    background-size: cover;
-    background-color: #cccccc;
+
 }
 
 .button_div {
     display: flex;
     justify-content: space-between;
     width: 15%;
+    margin-right: 10px;
 }

@@ -13,7 +13,7 @@ export const JobAddForm = () => (
         <TextAreaInput
             label="Opis ogłoszenia"
             name="jobDesc"
-            rows={6}
+            rows={1}
             placeholder="Tutaj możesz wkleić treść ogłoszenia..."
         />
         <TextInput

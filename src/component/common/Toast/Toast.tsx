@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React,{useContext,useEffect,useState} from "react";
 import check from "../../../assets/check.svg"
 import error from "../../../assets/error.svg"
 import info from "../../../assets/info.svg"
@@ -12,47 +12,58 @@ import {ToastContext} from "../../../Context/ToastContext";
 const icons = {check, error, info, warning};
 
 export const Toast = () => {
-    const {toast} = useContext(ToastContext);
-    const [details, setDetails] = useState<ToastInfoWithID>(toast);
-    const [show, setShow] = useState<boolean>(false)
+    const {
+        toast,
+        deleteToast
+    } = useContext(ToastContext);
+    const [details,setDetails] = useState<ToastInfoWithID[]>(toast);
+
 
     useEffect(() => {
-        setShow(true);
         setDetails(toast)
 
         setTimeout(() => {
-            setShow(false);
-        }, 5000)
+            if (toast[0]) {
+                deleteToast(toast[0].id)
+            }
+        },8000)
 
-    }, [toast])
+    },[toast])
 
-
-    if (details.class === null) {
-        return null
-    }
 
     return (
         <>
-            {
-                show ?
-                    <div className={`notification-container`}>
-                        <div className={`notification toast toast-${details.class}`}>
-                            <button className="toast-button" onClick={() => setShow(false)}>
-                                X
-                            </button>
-                            <div className="notification-image">
-                                <img src={icons[details.class]} alt="icon"/>
-                            </div>
-                            <div>
-                                <p className="notification-title">{details.title}</p>
-                                <div className="notification-message">{details.description}</div>
-                            </div>
+            <div className={`notification-container`}>
+                {
+                    details.map(e => {
+                        if (e === undefined) {
+                            return null
+                        } else {
+                            return (
 
-                        </div>
-                    </div>
-                    :
-                    null
-            }
+                                <div
+                                    className={`notification toast toast-${e.class}`}
+                                    key={e.id}
+                                >
+                                    <button className="toast-button" onClick={() => deleteToast(e.id)}>
+                                        X
+                                    </button>
+                                    <div className="notification-image">
+                                        <img src={icons[e.class]} alt="icon"/>
+                                    </div>
+                                    <div>
+                                        <p className="notification-title">{e.title}</p>
+                                        <div className="notification-message">{e.description}</div>
+                                    </div>
+
+                                </div>
+
+                            )
+                        }
+                    })
+
+                }
+            </div>
         </>
     )
 }
