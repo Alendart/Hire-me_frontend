@@ -26,7 +26,7 @@ export const JobAddForm = () => (
             label="Adres firmy"
             name="address"
             type="text"
-            placeholder="Podaj adres firmy..."
+            placeholder="np. Poznań, Towarowa 5"
         />
 
     </>
