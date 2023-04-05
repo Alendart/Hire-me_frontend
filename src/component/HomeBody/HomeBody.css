@@ -1,0 +1,10 @@
+.home_body, .home-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.home-title {
+    align-self: center;
+}

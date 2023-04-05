@@ -11,9 +11,24 @@ export async function loginCheck(login: string): Promise<boolean | ErrorMessage>
     return await res.json()
 }
 
+export async function logoutUser(): Promise<boolean | ErrorMessage> {
+    const res = await fetch(`${userUrl}/logout`,{
+        method: "GET",
+        credentials: "include"
+    });
+    if (res.status === 200) {
+        return true
+    } else {
+        return res.json()
+    }
+
+}
+
+
 export async function checkCookies(): Promise<UserSimpleEntity | null | ErrorMessage> {
     const res = await fetch(`${userUrl}/`,{
-        method: "GET",credentials: "include"
+        method: "GET",
+        credentials: "include"
     });
     return await res.json()
 }
