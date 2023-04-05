@@ -15,7 +15,7 @@ import {ModalShowContext} from "../../Context/ModalShowContext";
 import {MainRefreshContext} from "../../Context/MainRefreshContext";
 
 interface SelectValue {
-    status: applicationStatusString;
+    statusSelect: applicationStatusString;
 }
 
 interface Props {
@@ -27,13 +27,13 @@ export const JobStatusSelectForm = (props: Props) => {
     const {updateModalData} = useContext(ModalShowContext);
     const {updateJobRefresh} = useContext(JobRefreshContext);
     const {updateMainRefresh} = useContext(MainRefreshContext);
-    const [data,setData] = useState<string[]>(['']);
+    const [key,setKey] = useState<string[]>(['']);
     const [value,setValue] = useState<string[]>([''])
 
     useEffect(() => {
         const keys = Object.keys(applicationStatus);
         const values = Object.values(applicationStatus);
-        setData(keys);
+        setKey(keys);
         setValue(values);
     },[])
 
@@ -42,12 +42,12 @@ export const JobStatusSelectForm = (props: Props) => {
             <
                 Formik
                 initialValues={{
-                    status: "Prepared",
+                    statusSelect: "Prepared",
                 }}
                 validationSchema={Yup.object({
-                    status: Yup.string()
+                    statusSelect: Yup.string()
                         .required("Pole wymagane")
-                        .oneOf(data),
+                        .oneOf(key),
                 })}
                 onSubmit={
                     async (
@@ -55,7 +55,7 @@ export const JobStatusSelectForm = (props: Props) => {
                         {setSubmitting}: FormikHelpers<SelectValue>
                     ) => {
                         if (props.id) {
-                            const res = await updateJobStatus(values.status,props.id)
+                            const res = await updateJobStatus(values.statusSelect,props.id)
                             if (res === true) {
                                 updateToast({
                                     class: "check",
@@ -89,8 +89,8 @@ export const JobStatusSelectForm = (props: Props) => {
                     <Select label="Nowy status" name="statusSelect">
                         <option value="">Wybierz nowy status...</option>
                         {
-                            data[0] ?
-                                data.map((e,i) => <option key={i} value={e}>{value[i]}</option>)
+                            key[0] ?
+                                key.map((e,i) => <option key={i} value={e}>{value[i]}</option>)
                                 :
                                 null
                         }

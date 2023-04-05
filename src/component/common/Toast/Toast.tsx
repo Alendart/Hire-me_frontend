@@ -48,8 +48,8 @@ export const Toast = () => {
                                     <button className="toast-button" onClick={() => deleteToast(e.id)}>
                                         X
                                     </button>
-                                    <div className="notification-image">
-                                        <img src={icons[e.class]} alt="icon"/>
+                                    <div className="notification-image-box">
+                                        <img className="notification-image" src={icons[e.class]} alt="icon"/>
                                     </div>
                                     <div>
                                         <p className="notification-title">{e.title}</p>
