@@ -6,3 +6,13 @@ h3 {
 footer {
     height: 165px;
 }
+
+.archive-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-message {
+    align-self: center;
+    font-weight: 400;
+}

@@ -1,0 +1,8 @@
+.archive-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-title {
+    align-self: center;
+}

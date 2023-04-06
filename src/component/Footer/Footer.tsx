@@ -9,14 +9,14 @@ import {listLastArchiveJobs} from "../../utils/API_job";
 import {Spinner} from "../common/Spinner/Spinner";
 import {Btn} from "../common/Btn/Btn";
 import {useNavigate} from "react-router-dom";
-import {MainRefreshContext} from "../../Context/MainRefreshContext";
+import {RefreshContext} from "../../Context/RefreshContext";
 
 
 export const Footer = () => {
     const {updateToast} = useContext(ToastContext);
-    const {mainRefresh} = useContext(MainRefreshContext);
+    const {refresh} = useContext(RefreshContext);
     const navigate = useNavigate();
-    const [last,setLast] = useState<TableJobEntity>();
+    const [last,setLast] = useState<TableJobEntity[]>([]);
     const [blank,setBlank] = useState<boolean>(false);
     const [loading,setLoading] = useState<boolean>(false);
 
@@ -26,7 +26,7 @@ export const Footer = () => {
             setLoading(true);
             setBlank(false);
             const res = await listLastArchiveJobs();
-            if (res) {
+            if (res[0]) {
                 if (res.err) {
                     updateToast({
                         class: "error",
@@ -48,7 +48,7 @@ export const Footer = () => {
             setLoading(false);
         })()
 
-    },[mainRefresh])
+    },[refresh])
 
     if (loading) {
         return <Spinner/>
@@ -56,14 +56,14 @@ export const Footer = () => {
 
     return (
         <footer>
-            <div>
+            <div className="archive-footer">
                 <h3>Ostatnio zarchiwizowane zgłoszenia:</h3>
                 {
                     blank ?
-                        <p>Jeszcze nic tu nie ma...</p>
+                        <p className="archive-message">Niezarchiwizowano jeszcze żadnego ogłoszenia...</p>
                         :
                         <>
-                            <ArchiveTable item={last}/>
+                            <ArchiveTable list={last}/>
                             <Btn name="Przejdź do archiwum" class="archive" function={() => navigate('/archive')}/>
                         </>
 

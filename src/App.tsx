@@ -15,9 +15,11 @@ import {HomeView} from "./component/views/HomeView";
 import {ModalShowContext} from './Context/ModalShowContext';
 import {ModalData} from "./types/modal.context.types";
 import {UserView} from "./component/views/UserView";
+import {RefreshContext} from './Context/RefreshContext';
 
 export function App() {
     const [toast,setToast] = useState<ToastInfoWithID[]>([]);
+    const [refresh,setRefresh] = useState<boolean>(false);
     const [modal,setModal] = useState<ModalData>({
         show: false,
         id: '',
@@ -27,6 +29,10 @@ export function App() {
         login: null,
     })
     const navigate = useNavigate();
+
+    const updateRefresh = () => {
+        setRefresh(prev => !prev);
+    }
 
     const updateModalData = (id?: string) => {
         if (id) {
@@ -133,16 +139,21 @@ export function App() {
                         modal,
                         updateModalData,
                     }}>
-                        <Toast/>
-                        <Routes>
-                            <Route path="/" element={<MainView/>}/>
-                            <Route path="/home" element={<HomeView/>}/>
-                            <Route path="/archive" element={<ArchiveView/>}/>
-                            <Route path="/map" element={<MapView/>}/>
-                            <Route path="/apply/:id" element={<ApplyView/>}/>
-                            <Route path="/user" element={<UserView/>}/>
-                            <Route path="*" element={<MainView/>}/>
-                        </Routes>
+                        <RefreshContext.Provider value={{
+                            refresh,
+                            updateRefresh,
+                        }}>
+                            <Toast/>
+                            <Routes>
+                                <Route path="/" element={<MainView/>}/>
+                                <Route path="/home" element={<HomeView/>}/>
+                                <Route path="/archive" element={<ArchiveView/>}/>
+                                <Route path="/map" element={<MapView/>}/>
+                                <Route path="/apply/:id" element={<ApplyView/>}/>
+                                <Route path="/user" element={<UserView/>}/>
+                                <Route path="*" element={<MainView/>}/>
+                            </Routes>
+                        </RefreshContext.Provider>
                     </ModalShowContext.Provider>
                 </ToastContext.Provider>
             </AuthUserContext.Provider>

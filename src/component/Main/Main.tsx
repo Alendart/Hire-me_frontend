@@ -6,12 +6,12 @@ import {TableJobEntity} from "types";
 import {Spinner} from "../common/Spinner/Spinner";
 import {listAllActiveJobs} from "../../utils/API_job";
 import {ToastContext} from "../../Context/ToastContext";
-import {MainRefreshContext} from "../../Context/MainRefreshContext";
+import {RefreshContext} from "../../Context/RefreshContext";
 
 
 export const Main = () => {
     const {updateToast} = useContext(ToastContext);
-    const {mainRefresh} = useContext(MainRefreshContext);
+    const {refresh} = useContext(RefreshContext);
     const [list,setList] = useState<TableJobEntity[]>([]);
     const [blank,setBlank] = useState<boolean>(false);
     const [loading,setLoading] = useState<boolean>(false);
@@ -44,7 +44,7 @@ export const Main = () => {
             setLoading(false);
         })()
 
-    },[mainRefresh])
+    },[refresh])
 
     if (loading) {
         return <Spinner/>
