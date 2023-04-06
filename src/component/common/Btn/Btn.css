@@ -56,3 +56,17 @@
     width: 140px;
     height: 40px;
 }
+
+.btn-archive {
+    width: 20%;
+    margin-left: 20px;
+}
+
+.btn-main-return {
+    width: 20%;
+    margin-top: 60px;
+}
+
+.btn-logout {
+    width: 14%;
+}

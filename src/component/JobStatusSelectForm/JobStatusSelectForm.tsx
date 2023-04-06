@@ -12,7 +12,7 @@ import {applicationStatus,applicationStatusString} from "types";
 import {ToastContext} from "../../Context/ToastContext";
 import {JobRefreshContext} from "../../Context/JobRefreshContext";
 import {ModalShowContext} from "../../Context/ModalShowContext";
-import {MainRefreshContext} from "../../Context/MainRefreshContext";
+import {RefreshContext} from "../../Context/RefreshContext";
 
 interface SelectValue {
     statusSelect: applicationStatusString;
@@ -26,7 +26,7 @@ export const JobStatusSelectForm = (props: Props) => {
     const {updateToast} = useContext(ToastContext)
     const {updateModalData} = useContext(ModalShowContext);
     const {updateJobRefresh} = useContext(JobRefreshContext);
-    const {updateMainRefresh} = useContext(MainRefreshContext);
+    const {updateRefresh} = useContext(RefreshContext);
     const [key,setKey] = useState<string[]>(['']);
     const [value,setValue] = useState<string[]>([''])
 
@@ -63,7 +63,7 @@ export const JobStatusSelectForm = (props: Props) => {
                                     description: "Poprawnie zmieniono status",
                                 });
                                 updateJobRefresh();
-                                updateMainRefresh();
+                                updateRefresh();
                                 updateModalData();
                             } else if (res.err) {
                                 updateToast({

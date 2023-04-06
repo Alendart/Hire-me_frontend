@@ -9,14 +9,14 @@ import {AccountPopup} from "../AccountPopup/AccountPopup";
 import {AuthUserContext} from "../../Context/AuthUserContext";
 import {JobFormik} from "../JobFormik/JobFormik";
 import {ModalShowContext} from "../../Context/ModalShowContext";
-import {MainRefreshContext} from "../../Context/MainRefreshContext";
+import {RefreshContext} from "../../Context/RefreshContext";
 import {NavLink,useLocation} from "react-router-dom";
 
 
 export const Header = () => {
     const {user} = useContext(AuthUserContext);
     const {updateModalData} = useContext(ModalShowContext);
-    const {mainRefresh} = useContext(MainRefreshContext)
+    const {refresh} = useContext(RefreshContext)
     const [userId,setUserId] = useState<string>('');
     const location = useLocation();
 
@@ -24,7 +24,7 @@ export const Header = () => {
         if (user.id) {
             setUserId(user.id);
         }
-    },[user,mainRefresh])
+    },[user,refresh])
 
     return (
         <>

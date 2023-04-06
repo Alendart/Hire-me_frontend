@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import {TableJobEntity} from "types";
 import {useNavigate} from "react-router-dom";
 import {ModalShowContext} from "../../../Context/ModalShowContext";
-import {MainRefreshContext} from "../../../Context/MainRefreshContext";
+import {RefreshContext} from "../../../Context/RefreshContext";
 import {updateJobStatus} from "../../../utils/API_job";
 import {ToastContext} from "../../../Context/ToastContext";
 import {Btn} from "../Btn/Btn";
@@ -17,7 +17,7 @@ export const OneRow = (props: Props) => {
     const navigate = useNavigate();
     const {updateToast} = useContext(ToastContext)
     const {updateModalData} = useContext(ModalShowContext);
-    const {updateMainRefresh} = useContext(MainRefreshContext);
+    const {updateRefresh} = useContext(RefreshContext);
 
     const statusChange = () => {
         updateModalData("JobStatusSelectForm");
@@ -32,7 +32,7 @@ export const OneRow = (props: Props) => {
                 title: "Przeniesiono do archiwum",
                 description: `Zarchiwizowano ogłoszenie "${props.item.jobName}"`,
             });
-            updateMainRefresh();
+            updateRefresh();
         } else if (res.err) {
             updateToast({
                 class: "error",

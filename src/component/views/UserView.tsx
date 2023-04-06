@@ -38,8 +38,8 @@ export const UserView = () => {
     return (
         <>
             <Header/>
-            <div>
-                <h2>Widok konta użytkownika, Nic tu jeszcze nie ma....</h2>
+            <div className="app_body">
+                <p>Widok konta użytkownika, Nic tu jeszcze nie ma....</p>
                 <p>Oprócz...</p>
                 <Btn name="Wyloguj" class="logout" function={() => handleClick()}/>
             </div>
