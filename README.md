@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+![Logo](src/Hire_me_logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hire me!
 
-## Available Scripts
+Application for people who looking for new job. Allows you to list all job apply which you sent out, together with their
+description, actual apply status, place on map and CV which you added to that apply.
 
-In the project directory, you can run:
+You can easily manage that applies, change status and add files
 
-### `npm start`
+## Bulit with
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Main libraries used for this project:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://img.shields.io/badge/-Typescript-20232b?logo=typescript&logoColor=3178C6&style=for-the-badge">
 
-### `npm run build`
+<img src="https://img.shields.io/badge/-React-20232b?logo=react&logoColor=61DAFB&style=for-the-badge">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://img.shields.io/badge/-React%20Router-20232b?logo=react%20router&logoColor=CA4245&style=for-the-badge">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://img.shields.io/badge/-Create%20React%20App-20232b?logo=Create%20React%20App&logoColor=09D3AC&style=for-the-badge">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://img.shields.io/badge/-Formik-20232b?logo=react%20hook%20form&logoColor=61DAFB&style=for-the-badge">
 
-### `npm run eject`
+<img src="https://img.shields.io/badge/-Leaflet-20232b?logo=leaflet&logoColor=199900&style=for-the-badge" >
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Usage demo
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![demo](https://user-images.githubusercontent.com/111238215/230797806-a8a9f28e-e6a9-404c-9e23-00ba835d93a4.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Try yourself
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can check app here: https://pawelb.networkmanager.pl/
 
-## Learn More
+Create new account or use testing to check it out!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Login: Testowe
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Password: test123
+
+## Getting started
+
+### Important note
+
+That is front-end app for API created by me, which can be found on following
+link: https://github.com/Alendart/Hire-me_backend
+
+Whitout API working, that front-end application will won't work
+
+### Installation
+
+Clone project from github
+
+```bash
+git clone https://github.com/Alendart/Hire-me_frontend.git
+```
+
+Instal dependencies
+
+```bash
+ npm i
+```
+
+or
+
+```bash
+ yarn
+```
+
+### Running app
+
+```bash
+ npm start
+```
+
+Your application working now!
+
+Note:
+
+In default application will work on port 3000
+
+## Roadmap
+
+- Major updates upcoming
+  - Pagination of applies on main and archive view
+  - add more user data like avatar, name, personal info and so on
+
+- future updates:
+  - post client for user activation
+  - handling remind password and change password option
+  - encrypt pdf and avatar files
+  - additional data for applies like meeting date etc.
+
+## License
+
+That is my private project, please don't copy it without my permission. Not allowed to use it for commercial or
+non-commercial purpose other than checking my skills.
+
+Thanks!
