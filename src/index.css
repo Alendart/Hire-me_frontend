@@ -21,3 +21,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media (max-width: 1023px) {
+    header {
+        height: auto;
+    }
+
+    .header-image {
+        width: 100%;
+    }
+
+    .header_content {
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .home-page-link, .change-view-link, .user-link {
+        width: 100%;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-job-add, .btn-account, .btn-map-view {
+        width: 100%;
+    }
+
+    .button_div {
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    h2, h3 {
+        align-self: center;
+        font-size: 1.2em;
+        margin: 0 0 5% 0;
+    }
+
+    table {
+        width: 100%;
+        margin: 0
+    }
+
+    thead th:nth-child(1) {
+        width: 30%;
+    }
+
+    .btn-table-status-change {
+        width: 90%;
+    }
+
+    .archive-table {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .btn-archive, .btn-main-return {
+        width: 88%;
+        margin: 6%
+    }
+
+    .modal-job {
+        max-width: 90%;
+        min-width: 70%;
+        min-height: 50%;
+    }
+
+    .map-box {
+        margin: 5%;
+        width: 90%;
+    }
+
+    .file-box {
+        width: 50%;
+    }
+
+    .btn-file-modal {
+        height: 50%
+    }
+
+    .job {
+        width: 90%;
+        margin: 5%
+    }
+}

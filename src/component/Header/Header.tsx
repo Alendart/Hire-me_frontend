@@ -33,7 +33,8 @@ export const Header = () => {
                     {
                         userId ?
                             <>
-                                <NavLink to={'/'}><img className="img-logo" src={logo} alt="logo"/></NavLink>
+                                <NavLink className="home-page-link" to={'/'}><img className="img-logo" src={logo}
+                                                                                  alt="logo"/></NavLink>
                                 <Btn class="job-add" name="Dodaj nową pracę"
                                      function={() => updateModalData("JobFormik")}/>
                             </>
@@ -46,7 +47,8 @@ export const Header = () => {
                             userId ?
                                 <>
                                     <div className="btn btn-map-view">
-                                        <NavLink to={location.pathname === "/map" ? '/' : '/map'}>
+                                        <NavLink className="change-view-link"
+                                                 to={location.pathname === "/map" ? '/' : '/map'}>
                                             <img
                                                 src={
                                                     location.pathname === "/map" ? listIcon : mapIcon
@@ -56,7 +58,7 @@ export const Header = () => {
                                             />
                                         </NavLink>
                                     </div>
-                                    <NavLink to="/user">
+                                    <NavLink className="user-link" to="/user">
                                         <Btn class="account" name={`${user.login}`} function={() => null}/>
                                     </NavLink>
                                 </>
