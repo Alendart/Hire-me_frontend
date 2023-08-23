@@ -39,7 +39,7 @@ export const Header = () => {
                                      function={() => updateModalData("JobFormik")}/>
                             </>
                             :
-                            <img src={logo} alt="logo"/>
+                            <img className="img-logo" src={logo} alt="logo"/>
                     }
                     <div className="button_div">
 

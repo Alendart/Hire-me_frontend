@@ -33,7 +33,7 @@ code {
 
     .header_content {
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: center;
     }
 
     .home-page-link, .change-view-link, .user-link {
@@ -104,5 +104,26 @@ code {
     .job {
         width: 90%;
         margin: 5%
+    }
+
+    .navbar-home-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .job-navbar, .navbar-options {
+        flex-wrap: wrap;
+    }
+
+    .modal-status, .modal-file-select, .modal-file-add, .modal-login {
+        max-width: 80%;
+        min-width: 80%;
+        min-height: 30%;
+    }
+
+    .login-footer {
+        justify-content: space-around;
     }
 }
